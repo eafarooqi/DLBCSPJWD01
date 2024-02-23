@@ -15,7 +15,10 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.5.1",
         "bootstrap": "^5.3.3",
-        "bootstrap-toaster": "^5.2.0-beta1.1"
+        "bootstrap-toaster": "^5.2.0-beta1.1",
+        "resize-observer-polyfill": "^1.5.1",
+        "simplebar": "^6.2.5"
     }
 }
