@@ -8,35 +8,33 @@
 </head>
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
 
-<div class="wrapper jscontainer">
-
-    @section('sidebar')
-        @include('sections.default._sidenav')
-    @show
-
-    <div class="main">
-        @section('topbar')
-            @include('sections.default._topbar')
+    <div class="wrapper jscontainer">
+        @section('sidebar')
+            @include('sections.default._sidenav')
         @show
 
-        @section('breadcrumb')
-            @include('sections.default._breadcrumb')
-        @show
+        <div class="main">
+            @section('topbar')
+                @include('sections.default._topbar')
+            @show
 
-        @yield('content')
-        @yield('modals')
-        @yield('canvas')
-        {{ $slot ?? '' }}
+            @section('breadcrumb')
+                @include('sections.default._breadcrumb')
+            @show
 
-        @section('footer')
-            @include('sections.default._footer')
+            @yield('content')
+            @yield('modals')
+            @yield('canvas')
+            {{ $slot ?? '' }}
+
+            @section('footer')
+                @include('sections.default._footer')
+            @show
+        </div>
+
+        @section('scripts')
+            @include('sections.default._scripts')
         @show
     </div>
-
-    @section('scripts')
-        @include('sections.default._scripts')
-    @show
-
-</div>
 </body>
 </html>
