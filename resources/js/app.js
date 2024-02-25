@@ -1,5 +1,8 @@
 import './bootstrap';
 
+// Theme Styles AdminKit Pro
+import "../scss/_app.scss";
+
 // Bootstrap 5
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
