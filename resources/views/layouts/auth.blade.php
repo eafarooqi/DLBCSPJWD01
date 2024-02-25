@@ -12,8 +12,7 @@
 
     <title>{{ config('app.name', 'BMS') }}</title>
 
-    <!-- Styles -->
-    <!-- Scripts -->
+    <!-- Styles & Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('styles')
 </head>
@@ -23,10 +22,8 @@
             <div class="row vh-100">
                 <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
                     <div class="d-table-cell align-middle">
-
                         @yield('content')
                         {{ $slot ?? '' }}
-
                     </div>
                 </div>
             </div>
