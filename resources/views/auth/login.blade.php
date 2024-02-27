@@ -17,7 +17,7 @@
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
                 <!-- Validation Errors -->
-                <x-template.notification :showErrors="true" />
+                <x-template.notification />
 
                 @if (session('message'))
                     <div class="alert alert-danger">{{ session('message') }}</div>

@@ -1,52 +1,47 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.auth')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('content')
+
+    <div class="text-center mt-4">
+        <h1 class="h2">{{ __('Registration') }}</h1>
+        <p class="lead">
+            {{ __('Create your new account') }}
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="m-sm-4">
+
+                <!-- Validation Errors -->
+                <x-template.notification />
+
+                <x-form.form class="m-t" :action="route('register')" novalidate hasJsValidation>
+
+                    <!-- Name -->
+                    <x-form.input name="name" :label="__('Name')" label-class="col-form-label" :placeholder="__('Enter your name')" :wrap="false" :isRow="false" required autofocus />
+
+                    <!-- Email Address -->
+                    <x-form.input name="email" type="email" :label="__('Email')" label-class="col-form-label" :wrap="false" :isRow="false" required :placeholder="__('Enter Your Email')" />
+
+                    <!-- Password & Confirmation -->
+                    <x-form.input name="password" type="password" :label="__('Password')" label-class="col-form-label" :wrap="false" :isRow="false" :placeholder="__('Enter password')" required />
+                    <x-form.input name="password_confirmation" type="password" :label="__('Confirm Password')" :wrap="false" :isRow="false" labelClass="form-label" :placeholder="__('Confirm your password')" required />
+
+                    <div class="text-center mt-3">
+                        <x-button class="btn btn-primary block full-width mt-2 m-b">
+                            {{ __('Register') }}
+                        </x-button>
+                    </div>
+
+                    <a href="{{ route('login') }}">
+                        <small>{{ __('Already registered?') }}</small>
+                    </a>
+
+                </x-form.form>
+
+            </div>
         </div>
+    </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection
