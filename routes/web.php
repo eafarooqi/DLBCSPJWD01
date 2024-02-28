@@ -18,14 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Dashboard
-Route::get('/dashboard', [DashboardController::class, 'home'])->middleware(['auth'])->name('home');
-
-//Route::get('/dashboard', function () {
-    //return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-
+// Add protected routes. Only accessible after
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'home'])->middleware(['auth'])->name('home');
+
+    // user Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
