@@ -21,5 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultstringLength(191);
+
+        // Common Variables
+        // values assigned from controllers.
+        view()->share('headTitle', '');
+        view()->share('activeApp', '');
+        view()->share('pageTitle', '');
     }
 }

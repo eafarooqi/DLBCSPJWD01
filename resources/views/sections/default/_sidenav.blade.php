@@ -22,7 +22,7 @@
                         {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-start">
-                        <a class="dropdown-item" href="{{ route('profile') }}"><i class="align-middle me-1" data-feather="user"></i> {{ __('Profile') }}</a>
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="align-middle me-1" data-feather="user"></i> {{ __('Profile') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}"><i class="align-middle me-1" data-feather="log-out"></i> {{ __('.Logout') }}</a>
                     </div>
