@@ -11,4 +11,7 @@
 
 <x-template.sidebar-parent-item :active="$active === 'management'" :title="'Management'" :icon="'settings'">
 
+    <x-template.sidebar-child-item :title="__('Categories')" link="#" />
+    <x-template.sidebar-child-item :title="__('Genres')" link="#" />
+
 </x-template.sidebar-parent-item>
