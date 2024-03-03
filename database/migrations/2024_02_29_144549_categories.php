@@ -10,9 +10,13 @@ return new class extends Migration {
         // categories table
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
 
             $table->softDeletes();
+
+            // Foreign Key
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
 
         // Sub Categories table
@@ -23,7 +27,8 @@ return new class extends Migration {
 
             $table->softDeletes();
 
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            // Foreign Key
+            $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

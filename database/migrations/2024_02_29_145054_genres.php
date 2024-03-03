@@ -9,9 +9,13 @@ return new class extends Migration {
     {
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
 
             $table->softDeletes();
+
+            // Foreign Key
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
