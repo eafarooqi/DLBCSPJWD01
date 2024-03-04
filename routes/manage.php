@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Genre Routes
-Route::resource('genres', 'GenreController');
-
-require __DIR__.'/auth.php';
+Route::resource('genres', 'App\Http\Controllers\GenreController');
