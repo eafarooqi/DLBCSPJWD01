@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\genre;
+use App\Models\Genre;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class genrePolicy
+class GenrePolicy
 {
     use HandlesAuthorization;
 
@@ -15,7 +15,7 @@ class genrePolicy
 
     }
 
-    public function view(User $user, genre $genre): bool
+    public function view(User $user, Genre $genre): bool
     {
     }
 
@@ -23,19 +23,19 @@ class genrePolicy
     {
     }
 
-    public function update(User $user, genre $genre): bool
+    public function update(User $user, Genre $genre): bool
     {
     }
 
-    public function delete(User $user, genre $genre): bool
+    public function delete(User $user, Genre $genre): bool
     {
     }
 
-    public function restore(User $user, genre $genre): bool
+    public function restore(User $user, Genre $genre): bool
     {
     }
 
-    public function forceDelete(User $user, genre $genre): bool
+    public function forceDelete(User $user, Genre $genre): bool
     {
     }
 }

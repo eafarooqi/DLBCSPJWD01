@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Add protected routes. Only accessible after
+// Add protected routes. Only accessible after login and email verification
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // Dashboard

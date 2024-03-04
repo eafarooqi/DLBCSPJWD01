@@ -2,33 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\genreRequest;
-use App\Models\genre;
+use App\Http\Requests\GenreRequest;
+use App\Models\Genre;
 
-class genreController extends Controller
+class GenreController extends Controller
 {
     public function index()
     {
-        $this->authorize('viewAny', genre::class);
+        $this->authorize('viewAny', Genre::class);
 
-        return genre::all();
+        return Genre::all();
     }
 
-    public function store(genreRequest $request)
+    public function store(GenreRequest $request)
     {
-        $this->authorize('create', genre::class);
+        $this->authorize('create', Genre::class);
 
-        return genre::create($request->validated());
+        return Genre::create($request->validated());
     }
 
-    public function show(genre $genre)
+    public function show(Genre $genre)
     {
         $this->authorize('view', $genre);
 
         return $genre;
     }
 
-    public function update(genreRequest $request, genre $genre)
+    public function update(GenreRequest $request, Genre $genre)
     {
         $this->authorize('update', $genre);
 
@@ -37,7 +37,7 @@ class genreController extends Controller
         return $genre;
     }
 
-    public function destroy(genre $genre)
+    public function destroy(Genre $genre)
     {
         $this->authorize('delete', $genre);
 

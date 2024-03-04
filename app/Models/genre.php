@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Scopes\UserScope;
+use App\Traits\HasUserTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[ScopedBy([UserScope::class])]
-class genre extends Model
+class Genre extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory, HasUserTrait;
 
     public $timestamps = false;
 
@@ -20,6 +18,11 @@ class genre extends Model
         'name',
     ];
 
+    /**
+     * get the user to which this genre is attached to.
+     *
+     * @return BelongsTo
+     */
     protected function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
