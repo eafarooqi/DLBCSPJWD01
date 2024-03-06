@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware(['web', 'auth', 'verified'])
                 ->prefix('manage')
+                ->name('manage.')
                 ->group(base_path('routes/manage.php'));
         });
     }

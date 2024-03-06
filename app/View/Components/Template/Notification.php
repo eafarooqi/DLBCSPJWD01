@@ -3,6 +3,7 @@
 namespace App\View\Components\Template;
 
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class Notification extends Component
 {
@@ -22,15 +23,15 @@ class Notification extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return View
      */
-    public function render()
+    public function render(): View
     {
         return view('components.template.notification');
     }
 
-    private function getMessage() {
-
+    private function getMessage(): void
+    {
         if(session()->has('success')){
             $this->messages[] = ['type' => 'success', 'message' => session()->get('success')];
         }

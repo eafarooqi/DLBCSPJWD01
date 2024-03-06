@@ -19,7 +19,9 @@
         "@fortawesome/fontawesome-free": "^6.5.1",
         "bootstrap": "^5.3.3",
         "bootstrap-toaster": "^5.2.0-beta1.1",
+        "feather-icons": "^4.29.0",
         "resize-observer-polyfill": "^1.5.1",
-        "simplebar": "^6.2.5"
+        "simplebar": "^6.2.5",
+        "sweetalert2": "^11.6.13"
     }
 }

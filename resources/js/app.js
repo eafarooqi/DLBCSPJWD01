@@ -11,7 +11,24 @@ window.bootstrap = bootstrap;
 import { Toast, TOAST_STATUS, TOAST_THEME, TOAST_PLACEMENT } from "bootstrap-toaster";
 window.Toast = Toast;
 
+// Sweet Alert2 JS & CSS (Auto Include)
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+
 // Alpine JS
 import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
+
+import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
+
+// AdminKit (required)
+import "./modules/sidebar";
+import "./modules/theme";
+import "./modules/fullscreen";
+import "./modules/feather";
+
+
+// custom JS
+import '../../public/assets/js/main'
+

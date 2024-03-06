@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Template;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\View\Component;
 
@@ -12,42 +13,42 @@ class SidebarChildItem extends Component
      *
      * @var string
      */
-    public $title;
+    public string $title;
 
     /**
      * Item Title
      *
      * @var string
      */
-    public $abbr;
+    public string $abbr;
 
     /**
      * Item link
      *
      * @var string
      */
-    public $link;
+    public string $link;
 
     /**
      * Item Icon
      *
      * @var string
      */
-    public $icon;
+    public string $icon;
 
     /**
      * The close button for Alert.
      *
      * @var bool
      */
-    public $active;
+    public bool $active;
 
     /**
      * Item Permission
      *
      * @var string
      */
-    public $permission;
+    public mixed $permission;
 
     /**
      * Create a new component instance.
@@ -76,7 +77,8 @@ class SidebarChildItem extends Component
         }
     }
 
-    private function isActive(){
+    private function isActive(): void
+    {
         $this->active = $this->link === URL::current();
     }
 }
