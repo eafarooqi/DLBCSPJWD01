@@ -15,19 +15,18 @@
         <div class="sidebar-user">
             <div class="d-flex justify-content-center">
                 <div class="flex-shrink-0">
-                    <img src="{{ Auth::user()->picture }}" class="avatar img-fluid rounded me-1" alt="{{Auth::user()->lastname}}" />
+                    <img src="{{ Auth::user()->picture }}" class="avatar img-fluid rounded me-1" alt="{{  Auth::user()->name }}" />
                 </div>
                 <div class="flex-grow-1 ps-2">
                     <a class="sidebar-user-title dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
+                        {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-start">
                         <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="align-middle me-1" data-feather="user"></i> {{ __('Profile') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}"><i class="align-middle me-1" data-feather="log-out"></i> {{ __('.Logout') }}</a>
                     </div>
-
-                    <div class="sidebar-user-subtitle">User</div>
+                    <div class="sidebar-user-subtitle">Free</div>
                 </div>
             </div>
         </div>

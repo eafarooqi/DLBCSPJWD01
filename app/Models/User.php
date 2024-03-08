@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -42,4 +43,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the user's secret token.
+     *
+     * @param string|null $value
+     * @return string
+     */
+    public function getPictureAttribute(?string $value): string
+    {
+        // returning placeholder image if
+        // no image is set
+        if($value && Storage::disk('users')->exists($value)){
+            return Storage::disk('users')->url($value);
+        }
+
+        return asset('/assets/img/default-avatar.jpg');
+    }
 }

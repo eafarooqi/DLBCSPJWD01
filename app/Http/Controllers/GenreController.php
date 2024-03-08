@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GenreRequest;
 use App\Models\Genre;
-use App\Models\Management\Advice;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
