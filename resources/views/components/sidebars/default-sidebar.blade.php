@@ -1,4 +1,3 @@
-
 <x-template.sidebar-item :title="__('Dashboard')" :link="url('/')" :icon="'sliders'" />
 
 <x-template.sidebar-parent-item :active="$active === 'collection'" title="{{ __('My Collection') }}" :icon="'collection'">

@@ -2,9 +2,9 @@
 
 namespace App\View\Components\Template;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class SidebarChildItem extends Component
 {
@@ -62,19 +62,18 @@ class SidebarChildItem extends Component
         $this->abbr = $abbr;
         $this->icon = $icon;
         $this->permission = $permission;
-        $this->isActive($active);
+        $this->active = $active;
+        $this->isActive();
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return View
      */
-    public function render()
+    public function render(): View
     {
-        if($this->permission === null || Auth::user()->can($this->permission)) {
-            return view('components.template.sidebar-child-item');
-        }
+        return view('components.template.sidebar-child-item');
     }
 
     private function isActive(): void
