@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 // Genre Routes
 Route::resource('genres', 'App\Http\Controllers\GenreController');
+Route::resource('categories', 'App\Http\Controllers\CategoryController');

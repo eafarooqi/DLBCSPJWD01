@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Management\DataTables;
 
-use App\Models\Genre;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\{Button,
     Column,
@@ -13,7 +13,7 @@ use PowerComponents\LivewirePowerGrid\{Button,
     PowerGridComponent,
     PowerGridFields};
 
-final class GenreTable extends PowerGridComponent
+final class CategoryTable extends PowerGridComponent
 {
     public $searching;
     public $page;
@@ -52,11 +52,11 @@ final class GenreTable extends PowerGridComponent
     /**
     * PowerGrid datasource.
     *
-    * @return Builder<Genre>
+    * @return Builder<Category>
     */
     public function datasource(): Builder
     {
-        return Genre::query();
+        return Category::query();
     }
 
     /*
@@ -111,7 +111,7 @@ final class GenreTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Genre'), 'name')
+            Column::make(__('Category'), 'name')
                 ->sortable()
                 ->searchable(),
             Column::action('Action')->headerAttribute('text-center', '')
@@ -144,23 +144,23 @@ final class GenreTable extends PowerGridComponent
      *
      * @return array<int, Button>
      */
-    public function actions(Genre $row): array
+    public function actions(Category $row): array
     {
        return [
            Button::add('edit')
                ->slot('Edit')
                ->icon('edit', ['class' => 'fa-solid fa-pen-to-square me-1'])
                ->class('btn btn-primary btn-sm float-start')
-               ->route('manage.genres.edit', ['genre' => $row->id]),
+               ->route('manage.categories.edit', ['category' => $row->id]),
 
            Button::make('show', 'Show')
                ->class('btn btn-secondary btn-sm float-start')
-               ->route('manage.genres.show', ['genre' => $row->id])
+               ->route('manage.categories.show', ['category' => $row->id])
                ->target('_self'),
 
            Button::make('destroy', 'Delete')
                ->class('btn btn-danger btn-sm float-start doWithConfirmation')
-               ->route('manage.genres.destroy', ['genre' => $row->id])
+               ->route('manage.categories.destroy', ['category' => $row->id])
                ->method('delete')
                ->target('_self')
         ];
