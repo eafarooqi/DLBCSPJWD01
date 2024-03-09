@@ -25,7 +25,9 @@ class CategoryController extends AdminController
     public function create()
     {
         $this->authorize('create', Category::class);
-        return view('templates.manage.category.create');
+
+        $data['categoryOptions'] = Category::pluck('name','id');
+        return view('templates.manage.category.create', $data);
     }
 
     public function store(CategoryRequest $request)
