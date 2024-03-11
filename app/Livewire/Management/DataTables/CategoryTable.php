@@ -56,7 +56,7 @@ final class CategoryTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Category::query()->with(['parent']);
+        return Category::query()->orderBy('parent_id')->orderBy('name')->with(['parent']);
     }
 
     /*
@@ -91,7 +91,9 @@ final class CategoryTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('name')
+            ->add('name', function (Category $category) {
+                return $category->parent_id ? ' --- ' .$category->name : $category->name;
+            })
             ->add('parent_id', function (Category $category) {
                 return $category->parent?->name;
             });

@@ -12,12 +12,12 @@ use Illuminate\View\View;
 
 class CategoryController extends AdminController
 {
-    private CategoryService $categoryService;
 
-    public function __construct(CategoryService $categoryService)
+    public function __construct(
+        private readonly CategoryService $categoryService
+    )
     {
         parent::__construct();
-        $this->categoryService = $categoryService;
     }
 
     public function index(): View
@@ -55,8 +55,15 @@ class CategoryController extends AdminController
      */
     public function edit(Category $category)
     {
+        // Authorization
         $this->authorize('update', $category);
-        return view('templates.manage.category.edit', compact('category'));
+
+        // Template data
+        $data['category'] = $category;
+        $data['categoryOptions'] = $this->categoryService->getParentCategories();
+
+        // loading template
+        return view('templates.manage.category.edit', $data);
     }
 
     public function show(Category $category)

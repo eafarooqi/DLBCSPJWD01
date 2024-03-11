@@ -17,7 +17,8 @@ class CategoryPolicy
 
     public function view(User $user, Category $category): bool
     {
-        return true;
+        // Category must belong to user.
+        return $user->id == $category->user_id;
     }
 
     public function create(User $user): bool
@@ -27,21 +28,25 @@ class CategoryPolicy
 
     public function update(User $user, Category $category): bool
     {
-        return true;
+        // Category must belong to user.
+        return $user->id == $category->user_id;
     }
 
     public function delete(User $user, Category $category): bool
     {
-        return true;
+        // Category must belong to user.
+        return $user->id == $category->user_id;
     }
 
     public function restore(User $user, Category $category): bool
     {
-        return true;
+        // Category must belong to user.
+        return $user->id == $category->user_id;
     }
 
     public function forceDelete(User $user, Category $category): bool
     {
-        return true;
+        // Category must belong to user.
+        return $user->id == $category->user_id;
     }
 }

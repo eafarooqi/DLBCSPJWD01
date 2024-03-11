@@ -29,6 +29,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <x-form.input name="name" :label="__('Name')" :value="$category->name" required />
+                                        <x-form.select name="parent_id" :label="__('Category')" :options="$categoryOptions" :value="$category->parent_id" />
                                     </div>
                                 </div>
                             </div>

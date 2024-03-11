@@ -25,7 +25,8 @@ class GenrePolicy
 
     public function view(User $user, Genre $genre): bool
     {
-        return true;
+        // Genre must belong to user.
+        return $user->id == $genre->user_id;
     }
 
     public function create(User $user): bool
@@ -35,21 +36,25 @@ class GenrePolicy
 
     public function update(User $user, Genre $genre): bool
     {
-        return true;
+        // Genre must belong to user.
+        return $user->id == $genre->user_id;
     }
 
     public function delete(User $user, Genre $genre): bool
     {
-        return true;
+        // Genre must belong to user.
+        return $user->id == $genre->user_id;
     }
 
     public function restore(User $user, Genre $genre): bool
     {
-        return true;
+        // Genre must belong to user.
+        return $user->id == $genre->user_id;
     }
 
     public function forceDelete(User $user, Genre $genre): bool
     {
-        return true;
+        // Genre must belong to user.
+        return $user->id == $genre->user_id;
     }
 }
