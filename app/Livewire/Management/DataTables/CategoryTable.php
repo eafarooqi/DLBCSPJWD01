@@ -56,7 +56,7 @@ final class CategoryTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Category::query();
+        return Category::query()->with(['parent']);
     }
 
     /*
@@ -91,7 +91,10 @@ final class CategoryTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('name');
+            ->add('name')
+            ->add('parent_id', function (Category $category) {
+                return $category->parent?->name;
+            });
     }
 
     /*
@@ -114,6 +117,9 @@ final class CategoryTable extends PowerGridComponent
             Column::make(__('Category'), 'name')
                 ->sortable()
                 ->searchable(),
+            Column::make(__('Parent'), 'parent_id')
+                ->sortable()
+                ->searchable(),
             Column::action('Action')->headerAttribute('text-center', '')
                 ->bodyAttribute('', 'width: 250px;'),
         ];
@@ -127,7 +133,11 @@ final class CategoryTable extends PowerGridComponent
     public function filters(): array
     {
         return [
-            Filter::inputText('name')->operators(['contains'])
+            Filter::inputText('name')->operators(['contains']),
+            Filter::select('parent_id', 'parent_id')
+                ->dataSource(Category::OptionsWithCacheIndexed(query: Category::parents()))
+                ->optionValue('id')
+                ->optionLabel('name'),
         ];
     }
 

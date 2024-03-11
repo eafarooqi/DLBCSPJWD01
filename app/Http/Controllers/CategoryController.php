@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -11,6 +12,14 @@ use Illuminate\View\View;
 
 class CategoryController extends AdminController
 {
+    private CategoryService $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        parent::__construct();
+        $this->categoryService = $categoryService;
+    }
+
     public function index(): View
     {
         $this->authorize('viewAny', Category::class);
@@ -26,7 +35,7 @@ class CategoryController extends AdminController
     {
         $this->authorize('create', Category::class);
 
-        $data['categoryOptions'] = Category::pluck('name','id');
+        $data['categoryOptions'] = $this->categoryService->getParentCategories();
         return view('templates.manage.category.create', $data);
     }
 
