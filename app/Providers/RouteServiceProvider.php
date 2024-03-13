@@ -40,6 +40,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('manage')
                 ->name('manage.')
                 ->group(base_path('routes/manage.php'));
+
+            Route::middleware(['web', 'auth', 'verified'])
+                ->prefix('books')
+                ->group(base_path('routes/books.php'));
         });
     }
 }

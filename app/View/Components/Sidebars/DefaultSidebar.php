@@ -19,7 +19,7 @@ class DefaultSidebar extends Component
      *
      * @var array
      */
-    private array $parentItems = ['manage', 'collection'];
+    private array $parentItems = ['manage', 'books'];
 
     /**
      * Create a new component instance.
