@@ -57,4 +57,12 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+
+    /**
+     * Get the books for the category.
+     */
+    public function books(): HasMany
+    {
+        return $this->hasMany(Book::class, 'category_id');
+    }
 }
