@@ -150,23 +150,23 @@ final class BookTable extends PowerGridComponent
      *
      * @return array<int, Button>
      */
-    public function actions(Genre $row): array
+    public function actions(Book $row): array
     {
        return [
            Button::add('edit')
                ->slot('Edit')
                ->icon('edit', ['class' => 'fa-solid fa-pen-to-square me-1'])
                ->class('btn btn-primary btn-sm float-start')
-               ->route('manage.genres.edit', ['genre' => $row->id]),
+               ->route('books.edit', ['book' => $row->id]),
 
            Button::make('show', 'Show')
                ->class('btn btn-secondary btn-sm float-start')
-               ->route('manage.genres.show', ['genre' => $row->id])
+               ->route('books.show', ['book' => $row->id])
                ->target('_self'),
 
            Button::make('destroy', 'Delete')
                ->class('btn btn-danger btn-sm float-start doWithConfirmation')
-               ->route('manage.genres.destroy', ['genre' => $row->id])
+               ->route('books.destroy', ['book' => $row->id])
                ->method('delete')
                ->target('_self')
         ];

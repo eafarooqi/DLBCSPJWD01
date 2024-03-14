@@ -9,12 +9,12 @@ class BookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'isbn' => ['nullable'],
-            'author' => ['nullable'],
+            'name' => ['required', 'max:191'],
+            'isbn' => ['nullable', 'max:191'],
+            'author' => ['nullable', 'max:191'],
             'description' => ['nullable'],
             'published_date' => ['nullable', 'date'],
-            'total_pages' => ['nullable', 'integer'],
+            'total_pages' => ['nullable', 'integer', 'gt:0'],
         ];
     }
 

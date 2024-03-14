@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
+use App\Services\BookService;
+use App\Services\CategoryService;
+use App\Services\GenreService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -11,6 +14,15 @@ use Illuminate\View\View;
 
 class BookController extends AdminController
 {
+    public function __construct(
+        private readonly BookService $bookService,
+        private readonly GenreService $genreServiceService,
+        private readonly CategoryService $categoryService,
+    )
+    {
+        parent::__construct();
+    }
+
     public function index(): View
     {
         $this->authorize('viewAny', Book::class);
@@ -25,7 +37,9 @@ class BookController extends AdminController
     public function create()
     {
         $this->authorize('create', Book::class);
-        return view('templates.books.book.create');
+
+        $data['genreOptions'] = $this->genreServiceService->getGenreOptions();
+        return view('templates.books.book.create', $data);
     }
 
     public function store(BookRequest $request)

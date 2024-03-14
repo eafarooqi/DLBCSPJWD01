@@ -28,6 +28,14 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <x-form.input name="name" :label="__('Name')" required />
+                                        <x-form.input name="isbn" :label="__('ISBN')" />
+                                        <x-form.input name="author" :label="__('Author')" />
+
+                                        <x-form.tom-select name="genre_id" :label="__('Genre')" :options="$genreOptions" />
+
+                                        <x-form.textarea name="description" :label="__('Description')" />
+                                        <x-form.input type="number" min="0" name="total_pages" :label="__('Total Pages')" />
+                                        <x-form.flat-pickr name="published_date" :label="__('Published Date')" />
                                     </div>
                                 </div>
                             </div>

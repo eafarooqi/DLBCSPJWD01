@@ -20,8 +20,10 @@
         "bootstrap": "^5.3.3",
         "bootstrap-toaster": "^5.2.0-beta1.1",
         "feather-icons": "^4.29.0",
+        "flatpickr": "^4.6.13",
         "resize-observer-polyfill": "^1.5.1",
         "simplebar": "^6.2.5",
-        "sweetalert2": "^11.6.13"
+        "sweetalert2": "^11.6.13",
+        "tom-select": "^2.3.1"
     }
 }
