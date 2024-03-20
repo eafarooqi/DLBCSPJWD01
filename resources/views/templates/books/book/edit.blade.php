@@ -17,26 +17,7 @@
 
             <div class="row">
                 <div class="col-12 mb-4">
-                    <x-template.notification />
-
-                    <x-form.form :action="route('books.update', $book->id)" method="PUT" novalidate hasJsValidation>
-
-                        <div class="card shadow-sm components-section">
-                            <div class="card-header border-bottom border-info">
-                                {{ __('Book') }}
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <x-form.input name="name" :label="__('Name')" :value="$book->name" required />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer border-top border-success p-2 footer-light">
-                                <button type="submit" id="btnFormSubmit" class="btn btn-primary float-end">{{ __('Save') }}</button>
-                            </div>
-                        </div>
-                    </x-form.form>
+                    <livewire:books.crud.edit-book :book="$book" />
                 </div>
             </div>
         </div>

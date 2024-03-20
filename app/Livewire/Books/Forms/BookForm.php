@@ -7,7 +7,7 @@ use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class BookEditForm extends Form
+class BookForm extends Form
 {
     public ?Book $book;
     public ?User $user;
@@ -36,8 +36,7 @@ class BookEditForm extends Form
     #[Validate('nullable|date')]
     public ?string $published_date = null;
 
-
-    public function setBook(Book $book, User $user): void
+    public function setBook(Book $book): void
     {
         $this->book = $book;
         $this->name = $book->name;
@@ -49,8 +48,23 @@ class BookEditForm extends Form
         $this->total_pages = $book->total_pages;
     }
 
+    public function add(): void
+    {
+        // validation
+        $this->validate();
+
+        // creating new Book
+        Book::create(
+            $this->all()
+        );
+    }
+
     public function update(): void
     {
+        // validation
+        $this->validate();
+
+        // updating Book
         $this->book->update(
             $this->all()
         );

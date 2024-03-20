@@ -16,8 +16,6 @@ class BookController extends AdminController
 {
     public function __construct(
         private readonly BookService $bookService,
-        private readonly GenreService $genreServiceService,
-        private readonly CategoryService $categoryService,
     )
     {
         parent::__construct();
@@ -37,9 +35,7 @@ class BookController extends AdminController
     public function create()
     {
         $this->authorize('create', Book::class);
-
-        $data['genreOptions'] = $this->genreServiceService->getGenreOptions();
-        return view('templates.books.book.create', $data);
+        return view('templates.books.book.create');
     }
 
     public function store(BookRequest $request)

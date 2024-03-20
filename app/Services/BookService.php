@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Category;
+use App\Models\Genre;
 use Illuminate\Support\Collection;
 
 class BookService extends BaseService
@@ -16,4 +17,16 @@ class BookService extends BaseService
     {
         return Category::parents()->pluck('name','id');
     }
+
+    /**
+     * return options for the dropdowns used on the crud screens.
+     *
+     * @return array
+     */
+    public function getBookCrudOptions(): array
+    {
+        $data['genreOptions'] = Genre::optionsWithCache();
+        return $data;
+    }
+
 }
