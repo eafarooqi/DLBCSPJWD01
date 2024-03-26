@@ -56,7 +56,7 @@ final class GenreTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Genre::query();
+        return Genre::query()->withCount('books');
     }
 
     /*
@@ -91,7 +91,10 @@ final class GenreTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('name');
+            ->add('name')
+            ->add('book_count', function (Genre $genre) {
+                return $genre->books_count;
+            });
     }
 
     /*
@@ -114,6 +117,8 @@ final class GenreTable extends PowerGridComponent
             Column::make(__('Genre'), 'name')
                 ->sortable()
                 ->searchable(),
+            Column::make(__('Books'), 'book_count')->headerAttribute('text-center', '')
+                ->bodyAttribute('text-center', 'width: 150px;'),
             Column::action('Action')->headerAttribute('text-center', '')
                 ->bodyAttribute('', 'width: 250px;'),
         ];

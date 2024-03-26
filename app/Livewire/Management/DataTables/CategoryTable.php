@@ -56,7 +56,8 @@ final class CategoryTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Category::query()->orderBy('group_id')->orderBy('parent_id')->orderBy('name')->with(['parent']);
+        return Category::query()->orderBy('group_id')->orderBy('parent_id')
+            ->orderBy('name')->with(['parent'])->withCount('books');
     }
 
     /*
@@ -96,6 +97,9 @@ final class CategoryTable extends PowerGridComponent
             })
             ->add('parent_id', function (Category $category) {
                 return $category->parent?->name;
+            })
+            ->add('book_count', function (Category $category) {
+                return $category->isParent() ? "" : $category->books_count;
             });
     }
 
@@ -122,6 +126,8 @@ final class CategoryTable extends PowerGridComponent
             Column::make(__('Parent'), 'parent_id')
                 ->sortable()
                 ->searchable(),
+            Column::make(__('Books'), 'book_count')->headerAttribute('text-center', '')
+                ->bodyAttribute('text-center', 'width: 150px;'),
             Column::action('Action')->headerAttribute('text-center', '')
                 ->bodyAttribute('', 'width: 250px;'),
         ];
