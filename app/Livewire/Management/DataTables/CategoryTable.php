@@ -56,7 +56,7 @@ final class CategoryTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Category::query()->orderBy('parent_id')->orderBy('name')->with(['parent']);
+        return Category::query()->orderBy('group_id')->orderBy('parent_id')->orderBy('name')->with(['parent']);
     }
 
     /*

@@ -23,6 +23,21 @@ class Category extends Model
     ];
 
     /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::saving(function (Category $category) {
+
+            if($category->isParent()){
+                $category->group_id = $category->id;
+            } else {
+                $category->group_id = $category->parent_id;
+            }
+        });
+    }
+
+    /**
      * Scope a query to only include parent categories.
      */
     public function scopeParents(Builder $query): void
@@ -64,5 +79,10 @@ class Category extends Model
     public function books(): HasMany
     {
         return $this->hasMany(Book::class, 'category_id');
+    }
+
+    public function isParent(): bool
+    {
+        return $this->parent_id == null;
     }
 }

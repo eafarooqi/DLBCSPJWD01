@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('parent_id')->nullable();
+            $table->integer('group_id')->nullable();
             $table->string('name');
 
             $table->softDeletes();
