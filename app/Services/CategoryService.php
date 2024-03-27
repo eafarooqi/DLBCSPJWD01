@@ -8,6 +8,40 @@ use Illuminate\Support\Collection;
 class CategoryService extends BaseService
 {
     /**
+     * Create new category
+     *
+     * @param array $data
+     * @return Category
+     */
+    public function addCategory(array $data): Category
+    {
+        return Category::create($data);
+    }
+
+    /**
+     * Update category
+     *
+     * @param Category $category
+     * @param array $data
+     * @return bool
+     */
+    public function updateCategory(Category $category, array $data): bool
+    {
+        return $category->update($data);
+    }
+
+    /**
+     * Delete category
+     *
+     * @param Category $category
+     * @return bool
+     */
+    public function deleteCategory(Category $category): bool
+    {
+        return $category->delete();
+    }
+
+    /**
      * Return only parent categories.
      *
      * @return Collection

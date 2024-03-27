@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Services\BookService;
-use App\Services\CategoryService;
-use App\Services\GenreService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,7 +20,10 @@ class BookController extends AdminController
 
     public function index(): View
     {
+        // Authorization
         $this->authorize('viewAny', Book::class);
+
+        // Loading listing template
         return view('templates.books.book.index');
     }
 
@@ -34,47 +34,44 @@ class BookController extends AdminController
      */
     public function create()
     {
+        // Authorization
         $this->authorize('create', Book::class);
-        return view('templates.books.book.create');
-    }
 
-    public function store(BookRequest $request)
-    {
-        $this->authorize('create', Book::class);
-        Book::create($request->validated());
-        return redirect()->route('books.index')->with('success', __('Record created successfully'));
+        // Loading create template
+        return view('templates.books.book.create');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Book $genre
+     * @param Book $book
      * @return Application|Factory|\Illuminate\Contracts\View\View
-     * @throws AuthorizationException
      */
     public function edit(Book $book)
     {
+        // Authorization
         $this->authorize('update', $book);
+
+        // Loading edit template
         return view('templates.books.book.edit', compact('book'));
     }
 
     public function show(Book $book)
     {
+        // Authorization
         $this->authorize('view', $book);
-        return view('templates.books.book.show', compact('book'));
-    }
 
-    public function update(BookRequest $request, Book $book)
-    {
-        $this->authorize('update', $book);
-        $book->update($request->validated());
-        return redirect()->route('books.index')->with('success', __('Record updated successfully'));
+        // Loading show template
+        return view('templates.books.book.show', compact('book'));
     }
 
     public function destroy(Book $book)
     {
+        // Authorization
         $this->authorize('delete', $book);
         $book->delete();
+
+        // Redirecting back to listing page
         return redirect()->route('books.index')->with('success', __('Record successfully deleted'));
     }
 }

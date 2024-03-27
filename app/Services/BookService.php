@@ -26,6 +26,7 @@ class BookService extends BaseService
     public function getBookCrudOptions(): array
     {
         $data['genreOptions'] = Genre::optionsWithCache();
+        $data['categoryOptions'] = Category::getCategoryOptionsWithGroup();
         return $data;
     }
 

@@ -12,7 +12,6 @@ use Illuminate\View\View;
 
 class CategoryController extends AdminController
 {
-
     public function __construct(
         private readonly CategoryService $categoryService
     )
@@ -22,7 +21,10 @@ class CategoryController extends AdminController
 
     public function index(): View
     {
+        // Authorization
         $this->authorize('viewAny', Category::class);
+
+        // Loading listing template
         return view('templates.manage.category.index');
     }
 
@@ -33,16 +35,25 @@ class CategoryController extends AdminController
      */
     public function create()
     {
+        // Authorization
         $this->authorize('create', Category::class);
 
+        // Loading template data
         $data['categoryOptions'] = $this->categoryService->getParentCategories();
+
+        // loading create template
         return view('templates.manage.category.create', $data);
     }
 
     public function store(CategoryRequest $request)
     {
+        // Authorization
         $this->authorize('create', Category::class);
-        Category::create($request->validated());
+
+        // Creating new category
+        $this->categoryService->addCategory($request->validated());
+
+        // redirecting back to listing page.
         return redirect()->route('manage.categories.index')->with('success', __('Record created successfully'));
     }
 
@@ -58,31 +69,44 @@ class CategoryController extends AdminController
         // Authorization
         $this->authorize('update', $category);
 
-        // Template data
+        // Loading template data
         $data['category'] = $category;
         $data['categoryOptions'] = $this->categoryService->getParentCategories();
 
-        // loading template
+        // loading edit template
         return view('templates.manage.category.edit', $data);
-    }
-
-    public function show(Category $category)
-    {
-        $this->authorize('view', $category);
-        return view('templates.manage.category.show', compact('category'));
     }
 
     public function update(CategoryRequest $request, Category $category)
     {
+        // Authorization
         $this->authorize('update', $category);
-        $category->update($request->validated());
+
+        // Updating category
+        $this->categoryService->updateCategory($category, $request->validated());
+
+        // Redirecting back to listing page
         return redirect()->route('manage.categories.index')->with('success', __('Record updated successfully'));
+    }
+
+    public function show(Category $category)
+    {
+        // Authorization
+        $this->authorize('view', $category);
+
+        // loading view template
+        return view('templates.manage.category.show', compact('category'));
     }
 
     public function destroy(Category $category)
     {
+        // Authorization
         $this->authorize('delete', $category);
-        $category->delete();
+
+        // Deleting category
+        $this->categoryService->deleteCategory($category);
+
+        // Redirecting back to listing page
         return redirect()->route('manage.categories.index')->with('success', __('Record successfully deleted'));
     }
 }

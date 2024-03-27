@@ -19,9 +19,24 @@
             @if ($multiple) multiple @endif
             {{ $attributes->merge(['class' => $inputClass()]) }}
         >
-            @foreach ($options as $key => $label)
-                <option value="{{ $key }}" @if ($isSelected($key)) selected @endif>{{ $label }}</option>
-            @endforeach
+
+            @if($hasOptionGroups)
+                @foreach ($options as $option)
+                    @if($option->children)
+                        <optgroup label="{{ $option->name }}">
+                            @foreach ($option->children as $child)
+                                <option value="{{ $child->id }}" @if ($isSelected($child->id)) selected @endif>{{ $child->name }}</option>
+                            @endforeach
+                        </optgroup>
+                    @else
+                        <option value="{{ $option->id }}" @if ($isSelected($option->id)) selected @endif>{{ $option->name }}</option>
+                    @endif
+                @endforeach
+            @else
+                @foreach ($options as $key => $label)
+                    <option value="{{ $key }}" @if ($isSelected($key)) selected @endif>{{ $label }}</option>
+                @endforeach
+            @endif
         </select>
     </div>
 </div>

@@ -31,17 +31,22 @@ class TomSelect extends Component
         public bool $isInvalid = false,
         public bool $multiple = false,
         public bool $addNullRow = true,
+        public bool $hasOptionGroups = false,
         public mixed $options = [],
         public array $configurations = []
     ) {
         $this->name = $multiple ? $name.'[]' : $name;
         $this->id = $id ?? $name;
         $this->value = old($name, $value ?? '');
-
         $this->selectedKey = $this->getSelectedKey();
 
-        if($this->addNullRow) {
-            $this->options->prepend(__('Please select'), null);
+        if($this->addNullRow)
+        {
+            if($hasOptionGroups) {
+                $this->options->prepend((object)[ 'id' => null, 'name' => __('Please select'), 'children' => []]);
+            } else{
+                $this->options->prepend(__('Please select'), null);
+            }
         }
     }
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
 
 class Category extends Model
 {
@@ -70,7 +71,7 @@ class Category extends Model
      */
     public function children(): HasMany
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(Category::class,  'parent_id');
     }
 
     /**
@@ -84,5 +85,12 @@ class Category extends Model
     public function isParent(): bool
     {
         return $this->parent_id == null;
+    }
+
+    public static function getCategoryOptionsWithGroup()
+    {
+        return Cache::remember(self::getCacheKey() .'_opt_group', self::getCacheLife(), function() {
+            return self::parents()->with(['children'])->get();
+        });
     }
 }
