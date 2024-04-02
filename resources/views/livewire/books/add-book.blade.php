@@ -1,5 +1,5 @@
 <div>
-    <x-template.notification />
+    <x-template.notification :show-errors="true" />
 
     <form wire:submit.prevent="add" novalidate hasJsValidation>
         <div class="card shadow-sm components-section">

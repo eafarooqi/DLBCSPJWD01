@@ -31,4 +31,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Open Library config file
+    |--------------------------------------------------------------------------
+    | Here you may configure your settings for open library Api
+    | To learn more: https://openlibrary.org/dev/docs/api/books
+    */
+    'openlibrary' => [
+        'baseUri' => env('OPEN_LIBRARY_BASE_URL', 'https://openlibrary.org'),
+    ],
 ];
