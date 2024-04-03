@@ -1,0 +1,326 @@
+[x-cloak] { display: none !important; }
+
+/* Background color  */
+.bg-red {background-color: #c8102e;}
+.bg-light-red {background-color: #f74949;}
+.bg-black {background-color: #2c2a29;}
+.bg-gray {background-color: #808285;}
+.bg-lightgray {background-color: #bcbec0;}
+.bg-white {background-color: #fff;}
+.bg-green {background-color: #3c3;}
+.bg-orange {
+    background-color: #FF8400 !important;
+    color: #ffffff;
+}
+
+.bg-light-red {
+    background-color: #f16767 !important;
+    color: #ffffff;
+}
+
+.bg-maroon {
+    background-color: #c80404 !important;
+    color: #ffffff;
+}
+
+/* Border  */
+.border-bottom-gray {border-bottom: 1px solid #bab9b9;}
+.left-border-radius { border-radius: .5rem 0 0 .5rem !important;}
+
+/* Buttons  */
+.btn-border-gray {border-color: #d1d5db;}
+
+.btn-offwhite {
+    color: #262b40;
+    background-color: #f0ededc7;
+    border-color: #fff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(46, 54, 80, 0.075);
+}
+
+.btn-accordion-title {
+    display: block;
+    padding: .5em;
+    line-height: 1;
+    color: #212529;
+    background-color: #ffffff;
+    border: 0;
+    border-radius: .25rem;
+}
+
+.btn-accordion-title:hover {
+    color: #0d6efd;
+}
+
+.accordion-button-with-icons:after{
+    margin-left:20px;
+}
+
+.accordion-button:not(.collapsed) .btn-accordion-title{
+    background-color: #f2f4f6;
+}
+
+/* font sizes  */
+.font-size-12 { font-size: 12px; }
+.font-size-15 {font-size: 15px;}
+.font-size-18 {font-size: 18px;}
+.font-size-20 {font-size: 20px;}
+
+/* margins  */
+.ms-n2-5 {margin-left: -.7rem !important;}
+
+/* sizing  */
+.min-vw-5 {min-width: 5vw !important;}
+.min-vw-3{min-width:3vw!important}
+.min-vw-4{min-width:4vw!important}
+.min-vw-7 {min-width: 7vw !important;}
+.min-vw-8{min-width:8vw!important}
+.min-vw-9{min-width:9vw!important}
+.min-vw-10 {min-width: 10vw !important;}
+.min-vw-11{min-width:12vw!important}
+.min-vw-12{min-width:12vw!important}
+.min-vw-15 {min-width: 15vw !important;}
+.min-vw-25 {min-width: 25vw !important;}
+.min-vw-50 {min-width: 50vw !important;}
+
+.max-w-100 { max-width: 100px; }
+.max-w-150 { max-width: 150px; }
+.max-w-200 { max-width: 150px; }
+.max-w-250 { max-width: 250px; }
+.max-w-300 { max-width: 300px; }
+.max-w-350 { max-width: 350px; }
+.max-w-400 { max-width: 400px; }
+.max-w-450 { max-width: 450px; }
+.max-w-500 { max-width: 500px; }
+
+.w-10 {width: 10% !important;}
+.w-80 {width: 80% !important;}
+.w-85 {width: 85% !important;}
+.w-90 {width: 90% !important;}
+
+/* position  */
+.top-mn-3{top: -2px !important;}
+
+/* Cards  */
+.card-header.header-light {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.card-footer.footer-light {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Validation Errors  */
+.card-validation-errors {
+    border-color: #fecbcb;
+}
+
+.card-validation-errors .card-header {
+    background-color: #fedcdc;
+}
+
+.card-validation-errors .card-body {
+    background-color: rgba(189, 184, 184, 0.09);
+}
+
+.card-validation-errors .card-body ul li {
+    color: #fa5252;
+}
+
+.card.card-info {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 0;
+
+    .card-header{
+        padding: .5rem 1rem;
+        margin-bottom: 0;
+        background-color: rgba(0,0,0,.03);
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .card-footer{
+        padding: .5rem 1rem;
+        background-color: rgba(0,0,0,.03);
+        border-top: 1px solid rgba(0,0,0,.125);
+    }
+}
+
+.form-control.is-invalid,
+.is-invalid .choices .choices__inner,
+.was-validated .form-control:invalid {
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat:no-repeat;
+    background-position:right calc(.375em + .1875rem) center;
+    background-size:calc(.75em + .375rem) calc(.75em + .375rem)
+}
+
+.is-invalid .choices .choices__inner{
+    background-position:right calc(1.375em + .1875rem) center;
+}
+
+.was-validated .form-control:valid ~ .has-js-validation,
+.is-invalid input.form-control,
+.is-invalid .input-group-text,
+.is-invalid .choices .choices__inner,
+.is-invalid tags
+{
+    border: 1px solid #dc3545;
+}
+
+.lw-validation.is-invalid .form-control{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.lw-validation.is-valid .form-control {
+    border-color: #10b981;
+    padding-right: calc(1.5em + 1rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2310B981' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .25rem) center;
+    background-size: calc(.75em + .5rem) calc(.75em + .5rem);
+}
+
+.form-control.rtl.is-invalid,
+.was-validated .form-control.rtl:invalid
+{
+    background-position: left calc(.375em + .1875rem) center;
+}
+
+.valid .ts-wrapper.is-invalid{
+    border: 1px solid var(--bs-border-color) !important;
+    background: transparent!important;
+}
+
+/* Table Styles */
+.table.table-rounded {
+    border-radius: .475rem !important;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+td.text-end-td {
+    text-align: right !important;
+}
+
+.power-grid-table td .pg-actions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* General Styles */
+textarea.noResize {
+    resize: none;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: #d33 !important;
+}
+
+.has-error .tagify {
+    border-color: #e11d48;
+    padding-right: calc(1.5em + 1rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23E11D48' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23E11D48' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .25rem) center;
+    background-size: calc(.75em + .5rem) calc(.75em + .5rem);
+}
+
+.datepicker-title {
+    background-color: #dee0e3;
+    font-weight: 600;
+    padding: .175rem .75rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.user-avatar {
+    font-size: 2.4rem;
+}
+
+.hidding {
+    display: none;
+}
+
+.popover {
+    max-width: 350px;
+}
+
+.form-checkbox {
+    color: #374151;
+    padding: .5rem 0.25rem;
+    border-radius: .5rem;
+}
+
+.ajax-checkbox {
+    box-shadow: 0 0 0 1px #cbf4d8;
+}
+
+.choices{
+    width: 100%;
+    border-radius: 0.2rem;
+}
+
+.choices .choices__inner{
+    border-radius: 0.2rem;
+}
+
+.select2.select2-container{
+    width: 100% !important;
+}
+
+.form-control-view{
+    height: auto;
+    border-radius: .2rem;
+}
+
+.label-disabled {
+    color: #343a40;
+    border: 1px solid #bdc6d0;
+    border-radius: .2rem;
+    background-color: white;
+    font-size: 11px;
+}
+
+textarea:not(.e-rte-hidden) {
+    min-height: 80px;
+}
+
+.select2, .select2-search__field {
+    width:100%!important;
+}
+
+.select2-results__options li[aria-disabled="true"] {
+    background-color: #f3f3f4;
+}
+
+.forceRtl {
+    text-align: right;
+    direction: rtl !important;
+    unicode-bidi: bidi-override !important;
+}
+
+.fontSizeUrdu{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.dropdown-toggle-sidebar {
+
+}
+
+.sidebar-user .dropdown-toggle  {
+    background-color: transparent !important;
+    padding: 0 !important;
+    color: #e9ecef !important;
+    white-space: nowrap !important;
+}
+
+#sidebar .sidebar-content{
+    background: #12181a;
+}
