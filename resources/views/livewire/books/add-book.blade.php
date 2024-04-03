@@ -6,7 +6,7 @@
             <div class="card-header border-bottom border-info">
                 {{ __('Book') }}
                 <div class="text-center float-end" wire:loading>
-                    <img class="" src="{{ asset('assets/img/ajax-loader1.gif') }}" />
+                    <img class="" src="{{ asset('assets/img/ajax-loader.gif') }}" />
                 </div>
             </div>
             <div class="card-body">

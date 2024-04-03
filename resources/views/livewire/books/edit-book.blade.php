@@ -6,7 +6,7 @@
             <div class="card-header border-bottom border-info">
                 {{ __('Book') }}
                 <div class="text-center float-end" wire:loading>
-                    <img class="" src="{{ asset('assets/img/ajax-loader1.gif') }}" />
+                    <img class="" src="{{ asset('assets/img/ajax-loader.gif') }}" />
                 </div>
             </div>
             <div class="card-body">
@@ -16,7 +16,7 @@
                         <x-form.input name="bookForm.isbn" wire:model="bookForm.isbn" :label="__('ISBN')" />
                         <x-form.input name="bookForm.author" wire:model="bookForm.author" :label="__('Author')" />
 
-                        <x-form.tom-select name="bookForm.genre_id" wire:model="bookForm.genre_id" :label="__('Genre')" :options="$genreOptions" :value="$bookForm->genre_id ?? null" />
+                        <x-form.tom-select name="bookForm.genre_id" wire:model="bookForm.genre_id" :label="__('Genre')" :options="$genreOptions" :value="$bookForm->genre_id" />
 
                         <x-form.textarea name="bookForm.description" wire:model="bookForm.description" :label="__('Description')" />
                         <x-form.input name="bookForm.total_pages" wire:model="bookForm.total_pages" type="number" min="0" :label="__('Total Pages')" />
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-footer border-top border-success p-2 footer-light">
-                <button type="submit" id="btnFormSubmit" class="btn btn-primary float-end">{{ __('Add') }}</button>
+                <button type="submit" id="btnFormSubmit" class="btn btn-primary float-end">{{ __('Update') }}</button>
             </div>
         </div>
     </form>

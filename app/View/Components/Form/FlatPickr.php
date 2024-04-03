@@ -49,7 +49,7 @@ class FlatPickr extends Component
             'enableTime' => $this->enableTime,
             'time_24hr' => $this->time24Hr,
             'weekNumbers' => $this->weekNumbers,
-            'locale' => 'de',
+            'locale' => 'en',
         ], $this->options);
     }
 

@@ -10,10 +10,10 @@
 */
 
 "use strict";
-const d = document;
-d.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     initBootstrapValidation();             // Bootstrap 5 Validation init
     initDoConfirmation();                  // action confirmation popup
+    initLivewireAlerts();                  // Livewire event to show bootstrap toast
 
     // Custom Functions
     sidebarActiveJs()                       // making the menu active as a fallback if active class cant be added in php.
@@ -69,8 +69,20 @@ function initDoConfirmation(){
                     }
                 }
             });
-        };
+        }
     });
+}
+
+// Livewire event to show bootstrap toast
+function initLivewireAlerts(){
+
+    //document.addEventListener('livewire:init', () => {
+        Livewire.on('toast:alert', data => {
+            showToast(data.message, data.title, data.status)
+        })
+    //});
+
+
 }
 
 // #################### Custom Functions ########################
@@ -83,5 +95,30 @@ function sidebarActiveJs(){
         document.querySelector('.sub-active').closest('.sidebarNav > li').classList.add('active');
         document.querySelector('.sub-active').closest('.multi-level').classList.add('show');
     }
+}
+
+/**
+ * show bootstrap toast
+ *
+ * @param {string} message Actual message.
+ * @param {string} title The title of toast
+ * @param {number} status 1:Success, 2:Danger, 3:Warning, 4:Info
+ * @return {number}
+ */
+function showToast(message, title='', status = 1){
+
+    Toast.setPlacement(TOAST_PLACEMENT.BOTTOM_RIGHT);
+    Toast.setTheme(TOAST_THEME.DARK);
+    //Toast.setMaxCount(1);
+    //Toast.enableQueue(false);
+
+    let configs = {
+        animation: false,
+        title: title,
+        message: message || '',
+        status: status,
+        timeout: 3000,
+    }
+    Toast.create(configs);
 }
 

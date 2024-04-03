@@ -28,7 +28,7 @@ class AddBook extends Component
        return $this->bookService->getBookCrudOptions();
     }
 
-    public function add(): RedirectResponse
+    public function add()
     {
         $this->bookForm->add();
         return redirect()->route('books.index')->with('success', __('Book added successfully'));
