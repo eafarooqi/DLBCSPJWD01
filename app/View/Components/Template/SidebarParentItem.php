@@ -16,7 +16,7 @@ class SidebarParentItem extends Component
         public string $title,
         public bool $active = false,
         public string $icon = '',
-        public string $iconType = 'feather',
+        public string $iconType = 'awesome',
         public string $id = ''
     )
     {
