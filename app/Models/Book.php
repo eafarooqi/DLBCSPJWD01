@@ -28,22 +28,22 @@ class Book extends Model
         'published_date' => 'date',
     ];
 
-    protected function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    protected function category(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    protected function genre(): BelongsTo
+    public function genre(): BelongsTo
     {
         return $this->belongsTo(Genre::class);
     }
 
-    protected function language(): BelongsTo
+    public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
     }

@@ -3,6 +3,7 @@
 namespace App\Livewire\Books\DataTables;
 
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Genre;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\{Button,
@@ -57,7 +58,7 @@ final class BookTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Book::query();
+        return Book::query()->with(['category', 'genre']);
     }
 
     /*
@@ -75,7 +76,14 @@ final class BookTable extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'category' => [
+                'name',
+            ],
+            'genre' => [
+                'name',
+            ],
+        ];
     }
 
     /*
@@ -93,7 +101,9 @@ final class BookTable extends PowerGridComponent
     {
         return PowerGrid::fields()
             ->add('name')
-            ->add('isbn');
+            ->add('isbn')
+            ->add('category.name')
+            ->add('genre.name');
     }
 
     /*
@@ -119,6 +129,8 @@ final class BookTable extends PowerGridComponent
             Column::make(__('ISBN'), 'isbn')
                 ->sortable()
                 ->searchable(),
+            Column::make(__('Category'), 'category.name'),
+            Column::make(__('Genre'), 'genre.name'),
             Column::action('Action')->headerAttribute('text-center', '')
                 ->bodyAttribute('', 'width: 250px;'),
         ];
@@ -133,7 +145,16 @@ final class BookTable extends PowerGridComponent
     {
         return [
             Filter::inputText('name')->operators(['contains']),
-            Filter::inputText('isbn')->operators(['contains'])
+            Filter::inputText('isbn')->operators(['contains']),
+            Filter::multiSelect('category.name', 'category_id')
+                ->dataSource(Category::OptionsWithCacheIndexed())
+                ->optionValue('id')
+                ->optionLabel('name'),
+
+            Filter::multiSelect('genre.name', 'genre_id')
+                ->dataSource(Genre::OptionsWithCacheIndexed())
+                ->optionValue('id')
+                ->optionLabel('name'),
         ];
     }
 
