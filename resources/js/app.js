@@ -11,11 +11,6 @@ window.bootstrap = bootstrap;
 import { Toast, TOAST_STATUS, TOAST_THEME, TOAST_PLACEMENT } from "bootstrap-toaster";
 window.Toast = Toast;
 
-// Alpine JS
-//import Alpine from 'alpinejs';
-//window.Alpine = Alpine;
-//Alpine.start();
-
 // Flatpickr
 import flatpickr from "flatpickr";
 window.flatpickr = flatpickr;

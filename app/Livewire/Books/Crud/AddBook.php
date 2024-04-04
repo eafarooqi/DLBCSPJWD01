@@ -3,11 +3,11 @@
 namespace App\Livewire\Books\Crud;
 
 use App\Livewire\Books\Forms\BookForm;
-use App\Providers\OpenLibraryServiceProvider;
 use App\Services\BookService;
 use App\Services\OpenLibraryService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Livewire\Features\SupportRedirects\Redirector;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
@@ -28,7 +28,7 @@ class AddBook extends Component
        return $this->bookService->getBookCrudOptions();
     }
 
-    public function add()
+    public function add(): RedirectResponse|Redirector
     {
         $this->bookForm->add();
         return redirect()->route('books.index')->with('success', __('Book added successfully'));

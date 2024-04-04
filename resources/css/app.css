@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
+@import "bootstrap-icons/font/bootstrap-icons.css";
 @import "bootstrap-toaster/dist/css/bootstrap-toaster.min.css";
 @import "tom-select/dist/css/tom-select.bootstrap5.min.css";
 @import "flatpickr/dist/flatpickr.min.css";

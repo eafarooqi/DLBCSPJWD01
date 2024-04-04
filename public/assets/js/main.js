@@ -75,14 +75,9 @@ function initDoConfirmation(){
 
 // Livewire event to show bootstrap toast
 function initLivewireAlerts(){
-
-    //document.addEventListener('livewire:init', () => {
-        Livewire.on('toast:alert', data => {
-            showToast(data.message, data.title, data.status)
-        })
-    //});
-
-
+    Livewire.on('toast:alert', data => {
+        showToast(data.message, data.title, data.status)
+    })
 }
 
 // #################### Custom Functions ########################

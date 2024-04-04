@@ -31,7 +31,7 @@ class EditBook extends Component
     public function update()
     {
         $this->bookForm->update();
-        return redirect()->route('books.index')->with('success', __('Book added successfully'));
+        $this->dispatch('toast:alert', message: 'Book updated successfully', title: 'Success', status: 1);
     }
 
     public function render(): View
