@@ -17,6 +17,7 @@
                         <x-form.input name="bookForm.author" wire:model="bookForm.author" :label="__('Author')" />
 
                         <x-form.tom-select name="bookForm.genre_id" wire:model="bookForm.genre_id" :label="__('Genre')" :options="$genreOptions" :value="$bookForm->genre_id" />
+                        <x-form.tom-select name="bookForm.category_id" wire:model="bookForm.category_id" :label="__('Category')" :options="$categoryOptions" :value="$bookForm->category_id" :has-option-groups="true" />
 
                         <x-form.textarea name="bookForm.description" wire:model="bookForm.description" :label="__('Description')" />
                         <x-form.input name="bookForm.total_pages" wire:model="bookForm.total_pages" type="number" min="0" :label="__('Total Pages')" />

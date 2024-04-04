@@ -28,7 +28,7 @@ class EditBook extends Component
        return $this->bookService->getBookCrudOptions();
     }
 
-    public function update()
+    public function update(): void
     {
         $this->bookForm->update();
         $this->dispatch('toast:alert', message: 'Book updated successfully', title: 'Success', status: 1);
