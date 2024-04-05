@@ -16,18 +16,50 @@ final readonly class OpenLibraryService
     /**
      * @throws RequestException
      */
-    public function search(string $type, string $qry): Collection
+    public function getBookByIsbn(string $isbn): ?BookData
+    {
+        $data = $this->search(['isbn'=>  $isbn]);
+
+        if($data->count() > 0)
+        {
+            return BookData::from($data->first());
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws RequestException
+     */
+    public function searchBooks(string $name=null, string $author=null, string $isbn=null): ?Collection
+    {
+        // preparing query string
+        $qryItems = [
+            'title' => $name,
+            'author' => $author,
+            'isbn' => $isbn,
+            'limit' => 100,
+        ];
+
+        $rawData = $this->search($this->prepareQueryString($qryItems));
+
+        $data = BookData::collect($rawData->toArray());
+
+        dd($data);
+    }
+
+    /**
+     * @throws RequestException
+     */
+    protected function search(array $query): Collection
     {
         $response = $this->client
-            ->withUrlParameters(['type' => $type, 'qry' => $qry])
-            ->get('search.json/?{type}={qry}')
+            ->get('search.json', $query)
             ->throw();
 
         if($response->successful())
         {
             $responseObj = $response->collect();
-
-            //dd($responseObj->get('docs'));
 
             if($responseObj->get('numFound')  == 0){
                 return collect([]);
@@ -40,17 +72,13 @@ final readonly class OpenLibraryService
     }
 
     /**
-     * @throws RequestException
+     * Generate URL-encoded query string from array
+     *
+     * @param array $queryItems
+     * @return array
      */
-    public function getBookByIsbn(string $isbn): ?BookData
+    private function prepareQueryString(array $queryItems): array
     {
-        $data = $this->search('isbn',  $isbn);
-
-        if($data->count() > 0)
-        {
-            return BookData::from($data->first());
-        }
-
-        return null;
+        return array_filter($queryItems);
     }
 }

@@ -4,7 +4,7 @@
 
     <x-template.sidebar-child-item :title="__('Add New')" link="{{ route('books.create') }}" />
     <x-template.sidebar-child-item :title="__('All Books')" link="{{ route('books') }}"  />
-    <x-template.sidebar-child-item :title="__('Search Books')" link="#" />
+    <x-template.sidebar-child-item :title="__('Open Library Search')" link="{{ route('ol-search') }}" />
 
 </x-template.sidebar-parent-item>
 

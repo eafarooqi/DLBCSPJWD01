@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\OpenLibraryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Books Routes
 Route::get('/', [BookController::class, 'index'])->name('books');
 Route::resource('books', 'App\Http\Controllers\BookController');
+
+// Open Library Routes
+Route::get('/ol-search', [OpenLibraryController::class, 'index'])->name('ol-search');
+Route::post('/ol-search', [OpenLibraryController::class, 'search'])->name('ol-search');
