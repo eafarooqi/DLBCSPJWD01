@@ -13,6 +13,9 @@ class BookData extends Data
     public string $isbnSelected;
 
     #[Computed]
+    public string $id;
+
+    #[Computed]
     public string $author;
 
     #[Computed]
@@ -39,6 +42,7 @@ class BookData extends Data
     ) {
         $this->isbnSelected = ($this->all_isbn[0] ?? '');
         $this->author = ($this->author_name[0] ?? '');
+        $this->id = $this->isbnSelected;
         $this->setUrls();
     }
 

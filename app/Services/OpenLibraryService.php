@@ -3,9 +3,13 @@
 namespace App\Services;
 
 use App\Dto\BookData;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Enumerable;
+use Illuminate\Support\LazyCollection;
+use Spatie\LaravelData\PaginatedDataCollection;
 
 final readonly class OpenLibraryService
 {
@@ -31,21 +35,21 @@ final readonly class OpenLibraryService
     /**
      * @throws RequestException
      */
-    public function searchBooks(string $name=null, string $author=null, string $isbn=null): ?Collection
+    public function searchBooks(string $name=null, string $author=null, string $isbn=null): mixed
     {
         // preparing query string
         $qryItems = [
             'title' => $name,
             'author' => $author,
             'isbn' => $isbn,
-            'limit' => 100,
+            'limit' => 10,
         ];
 
         $rawData = $this->search($this->prepareQueryString($qryItems));
 
         $data = BookData::collect($rawData->toArray());
 
-        dd($data);
+        return collect($data)->toArray();
     }
 
     /**

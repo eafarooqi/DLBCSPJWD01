@@ -23,7 +23,6 @@ class OpenLibraryController extends AdminController
 
     public function search(Request $request)
     {
-
         // search form validation
         $validated = $request->validate([
             'name' => 'required_without_all:author,isbn|max:255',
@@ -37,15 +36,8 @@ class OpenLibraryController extends AdminController
         ]
         );
 
-        //dd($validated);
-
         $data = $this->openLibraryService->searchBooks($validated['name'], $validated['author'], $validated['isbn']);
 
-        dd($data);
-
-
-
-        // Redirecting back to listing page
-        //return redirect()->route('manage.genres.index')->with('success', __('Record created successfully'));
+        return view('templates.books.open_library.search', ['books' => $data]);
     }
 }

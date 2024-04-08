@@ -38,16 +38,21 @@
 
             </x-form.form>
 
+            <livewire:test-table />
+
+            @if($books ?? null)
+
             <div class="row">
                 <div class="col-12">
 
                     <div class="card">
                         <div class="card-body">
-                            <livewire:books.data-tables.book-table />
+                            <livewire:books.data-tables.o-l-search-table :data="$books" />
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
 
         </div>
     </main>
