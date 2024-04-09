@@ -42,7 +42,7 @@ final readonly class OpenLibraryService
             'title' => $name,
             'author' => $author,
             'isbn' => $isbn,
-            'limit' => 10,
+            'limit' => 100,
         ];
 
         $rawData = $this->search($this->prepareQueryString($qryItems));

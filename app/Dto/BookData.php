@@ -13,7 +13,7 @@ class BookData extends Data
     public string $isbnSelected;
 
     #[Computed]
-    public string $id;
+    public int $id;
 
     #[Computed]
     public string $author;
@@ -42,7 +42,7 @@ class BookData extends Data
     ) {
         $this->isbnSelected = ($this->all_isbn[0] ?? '');
         $this->author = ($this->author_name[0] ?? '');
-        $this->id = $this->isbnSelected;
+        $this->id = $this->isbnSelected ? intval($this->isbnSelected) : intval(uniqid(rand(1000, 9999)));
         $this->setUrls();
     }
 

@@ -26,8 +26,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <x-form.input name="name" :label="__('Name')" value="the lord of the rings" />
-                                <x-form.input name="author" :label="__('Author')" />
-                                <x-form.input name="isbn" :label="__('ISBN')" />
+                                <x-form.input name="author" :label="__('Author')" value="{{ $search['author'] ?? '' }}" />
+                                <x-form.input name="isbn" :label="__('ISBN')" value="{{ $search['isbn'] ?? '' }}" />
                             </div>
                         </div>
                     </div>
@@ -38,8 +38,6 @@
 
             </x-form.form>
 
-            <livewire:test-table />
-
             @if($books ?? null)
 
             <div class="row">
@@ -47,7 +45,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <livewire:books.data-tables.o-l-search-table :data="$books" />
+                            <livewire:books.data-tables.o-l-search-table :ol-search-data="$books" />
                         </div>
                     </div>
                 </div>

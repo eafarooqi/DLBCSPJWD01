@@ -38,6 +38,6 @@ class OpenLibraryController extends AdminController
 
         $data = $this->openLibraryService->searchBooks($validated['name'], $validated['author'], $validated['isbn']);
 
-        return view('templates.books.open_library.search', ['books' => $data]);
+        return view('templates.books.open_library.search', ['books' => $data, 'search' => $validated]);
     }
 }
