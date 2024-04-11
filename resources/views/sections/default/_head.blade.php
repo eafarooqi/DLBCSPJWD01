@@ -20,3 +20,4 @@
 <script type="text/javascript">let asset_url = '<?php echo asset('/'); ?>'</script>
 
 @yield('styles')
+@stack('styles')

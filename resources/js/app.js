@@ -15,9 +15,18 @@ window.Toast = Toast;
 import flatpickr from "flatpickr";
 window.flatpickr = flatpickr;
 
+// Tom Select
 import TomSelect from "tom-select";
 window.TomSelect = TomSelect
 
+// File Pond
+import * as FilePond from 'filepond';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+FilePond.registerPlugin(FilePondPluginImagePreview);
+window.FilePond = FilePond;
+
+
+// Powergrid
 import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 
 // AdminKit (required)

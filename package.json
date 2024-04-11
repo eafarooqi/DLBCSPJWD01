@@ -19,6 +19,8 @@
         "bootstrap-icons": "^1.10.4",
         "bootstrap-toaster": "^5.2.0-beta1.1",
         "feather-icons": "^4.29.1",
+        "filepond": "^4.30.6",
+        "filepond-plugin-image-preview": "^4.6.12",
         "flatpickr": "^4.6.13",
         "resize-observer-polyfill": "^1.5.1",
         "simplebar": "^6.2.5",

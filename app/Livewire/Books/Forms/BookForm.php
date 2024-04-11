@@ -4,6 +4,7 @@ namespace App\Livewire\Books\Forms;
 
 use App\Models\Book;
 use App\Models\User;
+use App\Services\BookService;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -36,6 +37,9 @@ class BookForm extends Form
     #[Validate('nullable|date')]
     public ?string $published_date = null;
 
+    #[Validate('image|max:1024|nullable')] // 1MB Max
+    public $image;
+
     public function setBook(Book $book): void
     {
         $this->book = $book;
@@ -54,9 +58,12 @@ class BookForm extends Form
         $this->validate();
 
         // creating new Book
-        Book::create(
+        $book = Book::create(
             $this->all()
         );
+
+        // attaching book cover to book if provided.
+        app(BookService::class)->attachCover($book, $this->image);
     }
 
     public function update(): void

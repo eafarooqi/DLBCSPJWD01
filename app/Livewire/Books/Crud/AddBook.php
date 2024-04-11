@@ -7,12 +7,16 @@ use App\Services\BookService;
 use App\Services\OpenLibraryService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Livewire\Attributes\Validate;
 use Livewire\Features\SupportRedirects\Redirector;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddBook extends Component
 {
+    use WithFileUploads;
+
     public BookForm $bookForm;
     private BookService $bookService;
     private OpenLibraryService $openLibraryService;

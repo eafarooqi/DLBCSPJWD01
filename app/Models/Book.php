@@ -47,4 +47,15 @@ class Book extends Model
     {
         return $this->belongsTo(Language::class);
     }
+
+    /**
+     * generate book cover file name
+     *
+     * @param $cover
+     * @return string
+     */
+    public function getCoverFileName($cover): string
+    {
+        return $this->id . '.'.$cover->guessExtension();
+    }
 }

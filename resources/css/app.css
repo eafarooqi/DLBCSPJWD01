@@ -4,6 +4,8 @@
 @import "bootstrap-toaster/dist/css/bootstrap-toaster.min.css";
 @import "tom-select/dist/css/tom-select.bootstrap5.min.css";
 @import "flatpickr/dist/flatpickr.min.css";
+@import 'filepond/dist/filepond.min.css';
+@import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
 /* custom css */
 @import "../../public/assets/css/main.css";

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Book;
 use App\Models\Category;
 use App\Models\Genre;
 use Illuminate\Support\Collection;
@@ -30,4 +31,27 @@ class BookService extends BaseService
         return $data;
     }
 
+    /**
+     * add cover image to the given book
+     *
+     * @param Book $book
+     * @param $cover
+     * @return bool
+     */
+    public function attachCover(Book $book, $cover): bool
+    {
+        if(!$cover){
+            return false;
+        }
+
+        // getting file name
+        $fileName = $book->getCoverFileName($cover);
+
+        // attaching file with given book
+        $cover->storeAs(path: 'covers', name: $fileName);
+        $book->cover = $fileName;
+        $book->save();
+
+        return true;
+    }
 }

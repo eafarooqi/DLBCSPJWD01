@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('description')->nullable();
             $table->date('published_date')->nullable();
             $table->integer('total_pages')->nullable();
+            $table->string('cover', 255)->nullable();
 
             // System timestamps
             $table->timestamps();
