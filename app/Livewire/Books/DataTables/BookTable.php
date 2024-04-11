@@ -17,13 +17,6 @@ use PowerComponents\LivewirePowerGrid\{Button,
 
 final class BookTable extends PowerGridComponent
 {
-    public $searching;
-    public $page;
-    protected $queryString = [
-        'searching' => ['except' => ''],
-        'page' => ['except' => 1],
-    ];
-
     /*
     |--------------------------------------------------------------------------
     |  Features Setup

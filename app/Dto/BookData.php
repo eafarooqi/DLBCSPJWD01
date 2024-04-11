@@ -49,10 +49,34 @@ class BookData extends Data
     private function setUrls(): void
     {
         // setting image URL
+        $this->setImageURL();
+
+        // setting book URL
+        $this->setBookURL();
+    }
+
+    /**
+     * set book cover url
+     * default is set to placeholder
+     *
+     * @return void
+     */
+    private function setImageURL(): void
+    {
+        // setting image URL
+        $this->imageUrl = asset('assets/img/book-placeholder.jpg');
         if($this->isbnSelected) {
             $this->imageUrl = 'https://covers.openlibrary.org/b/isbn/' . $this->isbnSelected . '-M.jpg';
         }
+    }
 
+    /**
+     * set book online link
+     *
+     * @return void
+     */
+    private function setBookURL(): void
+    {
         // setting book URL
         if($this->coverEditionKey) {
             $this->bookUrl = 'https://openlibrary.org/books/' . $this->coverEditionKey;
