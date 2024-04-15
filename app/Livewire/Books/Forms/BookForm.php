@@ -50,6 +50,7 @@ class BookForm extends Form
         $this->category_id = $book->category_id;
         $this->description = $book->description;
         $this->total_pages = $book->total_pages;
+        $this->image = $book->cover;
     }
 
     public function add(): void
@@ -75,5 +76,8 @@ class BookForm extends Form
         $this->book->update(
             $this->all()
         );
+
+        // attaching book cover to book if provided.
+        app(BookService::class)->attachCover($this->book, $this->image);
     }
 }

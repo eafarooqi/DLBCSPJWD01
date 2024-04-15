@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <h2>Book Cover</h2>
+                            <h2>{{ __('Book Cover') }}</h2>
                             <div class="mt-2" style="max-width: 300px; margin: 0 auto;">
                                 <x-form.filepond
                                     wire:model="bookForm.image"

@@ -3,12 +3,12 @@
     x-data
     x-init="
         () => {
-            const post = FilePond.create($refs.{{ $attributes->get('ref') ?? 'input' }});
-            post.setOptions({
+            const pond = FilePond.create($refs.{{ $attributes->get('ref') ?? 'input' }});
+            pond.setOptions({
                 allowMultiple: {{ $attributes->has('multiple') ? 'true' : 'false' }},
                 server: {
                     process:(fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
-                        $wire.upload('{{ $attributes->whereStartsWith('wire:model')->first() }}', file, load, error, progress)
+                        $wire.upload('{{ $attributes->whereStartsWith('wire:model')->first() }}', file, load, error, progress);
                     },
                     revert: (filename, load) => {
                         $wire.removeUpload('{{ $attributes->whereStartsWith('wire:model')->first() }}', filename, load)
@@ -19,7 +19,13 @@
                 allowFileTypeValidation: {{ $attributes->has('allowFileTypeValidation') ? 'true' : 'false' }},
                 acceptedFileTypes: {!! $attributes->get('acceptedFileTypes') ?? 'null' !!},
                 allowFileSizeValidation: {{ $attributes->has('allowFileSizeValidation') ? 'true' : 'false' }},
-                maxFileSize: {!! $attributes->has('maxFileSize') ? "'".$attributes->get('maxFileSize')."'" : 'null' !!}
+                maxFileSize: {!! $attributes->has('maxFileSize') ? "'".$attributes->get('maxFileSize')."'" : 'null' !!},
+                allowRevert: {!! $attributes->has('allowRevert') ? "'".$attributes->get('allowRevert')."'" : 'true' !!}
+            });
+
+            pond.on('processfiles', (error, file) => {
+                console.log('File added', file);
+                //pond.removeFiles();
             });
         }
     "

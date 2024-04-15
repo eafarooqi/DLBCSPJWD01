@@ -7,9 +7,12 @@ use App\Models\Book;
 use App\Services\BookService;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditBook extends Component
 {
+    use WithFileUploads;
+
     public BookForm $bookForm;
     private BookService $bookService;
 
