@@ -31,6 +31,12 @@ class EditBook extends Component
        return $this->bookService->getBookCrudOptions();
     }
 
+    public function removeCover(): void
+    {
+        $this->bookService->removeCover($this->bookForm->book);
+        $this->bookForm->image = null;
+    }
+
     public function update(): void
     {
         $this->bookForm->update();

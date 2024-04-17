@@ -36,9 +36,11 @@
                                         <img alt="{{ $bookForm->name }}" src="{{ $bookForm->image }}" class="img-responsive mt-2 image" width="200">
                                     @endif
 
-                                    <div class="middle d-grid gap-2">
-                                        <button type="button" class="btn btn-danger btn-lg">Remove</button>
-                                    </div>
+                                    @if ($bookForm->image)
+                                        <div class="middle d-grid gap-2">
+                                            <button type="button" class="btn btn-danger btn-lg" wire:click="removeCover">{{ __('Remove') }}</button>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -53,7 +55,7 @@
                         </div>
 
                         @error('image')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
@@ -63,40 +65,6 @@
             </div>
         </div>
     </form>
-
-    <style>
-        .cover-image-container {
-            position: relative;
-            width: 180px;
-        }
-
-        .cover-image-container .image {
-            opacity: 1;
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: .5s ease;
-            backface-visibility: hidden;
-        }
-
-        .cover-image-container .middle {
-            transition: .5s ease;
-            opacity: 0;
-            position: absolute;
-            top: 95%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
-            background-color:rgba(0, 0, 0, 0.5);
-            width:100%;
-        }
-
-        .cover-image-container:hover .middle {
-            opacity: 1;
-        }
-
-    </style>
 </div>
 
 

@@ -96,7 +96,10 @@ final class BookTable extends PowerGridComponent
             ->add('name')
             ->add('isbn')
             ->add('category.name')
-            ->add('genre.name');
+            ->add('genre.name')
+            ->add('cover_image', function ($model) {
+                return $model->cover ? '<img src="' . $model->cover . '" width=50px />' : '';
+            });
     }
 
     /*
@@ -116,6 +119,7 @@ final class BookTable extends PowerGridComponent
     public function columns(): array
     {
         return [
+            Column::make(__('Cover'), 'cover_image')->headerAttribute('text-center', '')->bodyAttribute('text-center', 'width: 80px;'),
             Column::make(__('Title'), 'name')
                 ->sortable()
                 ->searchable(),
@@ -125,7 +129,7 @@ final class BookTable extends PowerGridComponent
             Column::make(__('Category'), 'category.name'),
             Column::make(__('Genre'), 'genre.name'),
             Column::action('Action')->headerAttribute('text-center', '')
-                ->bodyAttribute('', 'width: 250px;'),
+                ->bodyAttribute('', 'width: 200px;'),
         ];
     }
 
