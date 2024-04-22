@@ -69,7 +69,9 @@ class BookController extends AdminController
     {
         // Authorization
         $this->authorize('delete', $book);
-        $book->delete();
+
+        // Deleting book
+        $this->bookService->deleteBook($book);
 
         // Redirecting back to listing page
         return redirect()->route('books.index')->with('success', __('Record successfully deleted'));

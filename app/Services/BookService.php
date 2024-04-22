@@ -5,19 +5,42 @@ namespace App\Services;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Genre;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
 class BookService extends BaseService
 {
     /**
-     * Return only parent categories.
+     * Create new book
      *
-     * @return Collection
+     * @param array $data
+     * @return Book
      */
-    public function getParentCategories(): Collection
+    public function addBook(array $data): Book
     {
-        return Category::parents()->pluck('name','id');
+        return Book::create($data);
+    }
+
+    /**
+     * Update book
+     *
+     * @param Book $book
+     * @param array $data
+     * @return bool
+     */
+    public function updateBook(Book $book, array $data): bool
+    {
+        return $book->update($data);
+    }
+
+    /**
+     * Delete Book
+     *
+     * @param Book $book
+     * @return bool
+     */
+    public function deleteBook(Book $book): bool
+    {
+        return $book->delete();
     }
 
     /**

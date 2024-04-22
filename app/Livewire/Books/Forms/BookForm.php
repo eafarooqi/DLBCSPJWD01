@@ -59,9 +59,7 @@ class BookForm extends Form
         $this->validate();
 
         // creating new Book
-        $book = Book::create(
-            $this->all()
-        );
+        $book = app(BookService::class)->addBook($this->all());
 
         // attaching book cover to book if provided.
         app(BookService::class)->attachCover($book, $this->image);
@@ -72,10 +70,8 @@ class BookForm extends Form
         // validation
         $this->validate();
 
-        // updating Book
-        $this->book->update(
-            $this->all()
-        );
+        // Updating Book
+        app(BookService::class)->updateBook($this->book, $this->all());
 
         // attaching book cover to book if provided.
         app(BookService::class)->attachCover($this->book, $this->image);

@@ -19,6 +19,10 @@ window.flatpickr = flatpickr;
 import TomSelect from "tom-select";
 window.TomSelect = TomSelect
 
+// Sweet Alert2 JS & CSS (Auto Include)
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+
 // File Pond
 import * as FilePond from 'filepond';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';

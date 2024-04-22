@@ -24,6 +24,7 @@
         "flatpickr": "^4.6.13",
         "resize-observer-polyfill": "^1.5.1",
         "simplebar": "^6.2.5",
+        "sweetalert2": "^11.10.8",
         "tom-select": "^2.3.1"
     }
 }
