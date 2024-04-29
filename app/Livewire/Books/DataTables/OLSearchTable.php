@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Books\DataTables;
 
+use App\Models\Book;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
+use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
@@ -79,6 +82,29 @@ final class OLSearchTable extends PowerGridComponent
 
             Column::action('Action')->headerAttribute('text-center', '')
                 ->bodyAttribute('', 'width: 150px;'),
+        ];
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Actions Method
+    |--------------------------------------------------------------------------
+    | Enable the method below only if the Routes below are defined in your app.
+    |
+    */
+
+    /**
+     * PowerGrid Genre Action Buttons.
+     *
+     * @return array<int, Button>
+     */
+    public function actions($row): array
+    {
+        return [
+            Button::make('show', 'Show')
+                //->icon('show', ['class' => 'fa-solid fa-eye me-1'])
+                ->class('btn btn-info btn-sm float-start')
+                ->dispatchTo('books.modal.details-modal', 'loadBookDetails', ['details' => $row]),
         ];
     }
 }

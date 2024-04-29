@@ -9,7 +9,7 @@ class Modal extends Component
 {
     /**
      * Create a new component instance.
-     */
+    */
     public function __construct(
         public string $id,
         public bool $showCancel = true,
@@ -17,8 +17,7 @@ class Modal extends Component
         public string $title = '',
         public bool $scrollable = true,
         public bool $centered = true
-    )
-    {}
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

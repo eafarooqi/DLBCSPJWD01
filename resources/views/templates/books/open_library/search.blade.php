@@ -57,3 +57,9 @@
 
 @endsection
 
+@section('modals')
+    @parent
+    <livewire:books.modal.details-modal />
+@endsection
+
+

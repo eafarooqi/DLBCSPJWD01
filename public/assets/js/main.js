@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     initBootstrapValidation();             // Bootstrap 5 Validation init
     initDoConfirmation();                  // action confirmation popup
     initLivewireAlerts();                  // Livewire event to show bootstrap toast
+    initLivewireModals();                  // Livewire event to show bootstrap modal with livewire
 
     // Custom Functions
     sidebarActiveJs()                       // making the menu active as a fallback if active class cant be added in php.
@@ -77,6 +78,17 @@ function initDoConfirmation(){
 function initLivewireAlerts(){
     Livewire.on('toast:alert', data => {
         showToast(data.message, data.title, data.status)
+    })
+}
+
+// Listener to show bootstrap modal with livewire
+function initLivewireModals()
+{
+    // Book Detail Modal
+    Livewire.on('ShowOLSearchDetailModal', data => {
+        new bootstrap.Modal(document.getElementById('bookDetailsModal'), {
+            keyboard: true
+        }).show();
     })
 }
 
