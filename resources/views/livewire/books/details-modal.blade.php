@@ -4,7 +4,6 @@
 
             <h2>{{ $details['name'] ?? '' }}</h2>
 
-
             <div class="row">
                 <div class="col-sm-8">
                     <x-form.show :label="__('Name')" :value="$details['name'] ?? ''" />
@@ -17,10 +16,17 @@
                     <div class="text-center ">
                         <div class="d-flex justify-content-center">
                             <div class="cover-image-container text-center">
-                                <img alt="{{ $details['name'] ?? '' }}" src="{{ $details['imageUrl'] }}" class="img-responsive mt-2 image" width="200">
+                                <img alt="{{ $details['name'] ?? '' }}" src="{{ $details['imageUrl'] ?? '' }}" class="img-responsive mt-2 image" width="200">
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="actions-row">
+                    @if ($details['bookUrl'] ?? '')
+                        <a target="_blank" href="{{ $details['bookUrl'] ?? '' }}" class="btn btn-sm btn-primary float-end ms-2">View on openlibrary.org <i class="fas fa-external-link-square-alt"></i></a>
+                    @endif
+
+                    <button class="btn btn-sm btn-info float-end" wire:click="addToCollection">{{ __('Add to my collection') }}</button>
                 </div>
             </div>
 

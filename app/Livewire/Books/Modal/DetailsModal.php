@@ -19,6 +19,11 @@ class DetailsModal extends Component
         $this->dispatch('ShowOLSearchDetailModal');
     }
 
+    public function addToCollection()
+    {
+        dd($this->details);
+    }
+
     public function render(): View
     {
         return view('livewire.books.details-modal')->section('modals');
