@@ -5,6 +5,7 @@ namespace App\Livewire\Books\Forms;
 use App\Models\Book;
 use App\Models\User;
 use App\Services\BookService;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -43,6 +44,14 @@ class BookForm extends Form
     #[Validate('nullable|string|max:255')]
     public ?string $url = null;
 
+    public ?string $ol_image = null;
+
+    /**
+     * set edit form to the loaded book.
+     *
+     * @param Book $book
+     * @return void
+     */
     public function setBook(Book $book): void
     {
         $this->book = $book;
@@ -57,6 +66,12 @@ class BookForm extends Form
         $this->url = $book->url;
     }
 
+    /**
+     * load create form with defaults
+     *
+     * @param array $default
+     * @return void
+     */
     public function setDefaults(array $default): void
     {
         $this->name = $default['name'];
@@ -64,8 +79,27 @@ class BookForm extends Form
         $this->author = $default['author'];
         $this->total_pages = $default['total_pages'];
         $this->url = $default['url'];
+        $this->ol_image = $default['image'];
+
+        //dd(file_get_contents($default['image']));
+
+
+        //$imageContent = file_get_contents($default['image']);
+
+        //Storage::disk('covers')->put('ddd.jpg', $imageContent);
+
+       // $cover->storeAs(path: 'covers', name: $fileName);
+
+        //$this->image = $imageContent;
+
+        // $dafault['image'];
     }
 
+    /**
+     * add new book
+     *
+     * @return void
+     */
     public function add(): void
     {
         // validation
@@ -75,9 +109,14 @@ class BookForm extends Form
         $book = app(BookService::class)->addBook($this->all());
 
         // attaching book cover to book if provided.
-        app(BookService::class)->attachCover($book, $this->image);
+        app(BookService::class)->attachCover($book, $this->image, $this->ol_image);
     }
 
+    /**
+     * update book
+     *
+     * @return void
+     */
     public function update(): void
     {
         // validation

@@ -61,19 +61,30 @@ class BookService extends BaseService
      *
      * @param Book $book
      * @param $cover
+     * @param string|null $imageUrl
      * @return bool
      */
-    public function attachCover(Book $book, $cover): bool
+    public function attachCover(Book $book, $cover, ?string $imageUrl = null): bool
     {
-        if(!$cover){
+        if(!$cover && !$imageUrl){
             return false;
         }
 
-        // getting file name
-        $fileName = $book->getCoverFileName($cover);
+        if($imageUrl)
+        {
+            // saving file from the Open library image link
+            $imageContent = file_get_contents($imageUrl);
+            $fileName = $book->id.'.jpg';
+            Storage::disk('covers')->put($fileName, $imageContent);
+        } else {
+            // getting file name from uploaded file
+            $fileName = $book->getCoverFileName($cover);
 
-        // attaching file with given book
-        $cover->storeAs(path: 'covers', name: $fileName);
+            // saving file with book id as name
+            $cover->storeAs(path: 'covers', name: $fileName);
+        }
+
+        // attaching cover to book and saving
         $book->cover = $fileName;
         $book->save();
 
@@ -146,6 +157,7 @@ class BookService extends BaseService
         $book['isbn'] = $data['isbnSelected'];
         $book['total_pages'] = $data['totalPages'];
         $book['url'] = $data['bookUrl'];
+        $book['image'] = $data['imageUrl'];
 
         return $book;
     }

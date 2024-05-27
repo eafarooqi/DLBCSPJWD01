@@ -49,6 +49,14 @@ class AddBook extends Component
         }
     }
 
+    public function updated($property): void
+    {
+        // removing ol image as user has uploaded custom image.
+        if ($property === 'bookForm.image') {
+            $this->bookForm->ol_image = null;
+        }
+    }
+
     public function add(): RedirectResponse|Redirector
     {
         $this->bookForm->add();

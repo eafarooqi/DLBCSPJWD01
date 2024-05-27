@@ -27,6 +27,9 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <h2>{{ __('Book Cover') }}</h2>
+                            @if ($bookForm->ol_image ?? null)
+                                <img alt="{{ $bookForm->name ?? '' }}" src="{{ $bookForm->ol_image ?? '' }}" class="img-responsive mt-2 image" width="200">
+                            @endif
                             <div class="mt-2" style="max-width: 300px; margin: 0 auto;">
                                 <x-form.filepond
                                     wire:model="bookForm.image"
