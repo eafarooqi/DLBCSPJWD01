@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Genre;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BookService extends BaseService
@@ -110,5 +111,42 @@ class BookService extends BaseService
         $book->save();
 
         return true;
+    }
+
+    /**
+     * set the passed data to session to show on create page
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function addOLItemToCollection(array $data): bool
+    {
+        if(!$data){
+            return false;
+        }
+
+        // storing data in session
+        request()->session()->flash('_ol_input', $this->mapOlData($data));
+
+        return true;
+    }
+
+    /**
+     * Map passed data to Book model attributes.
+     *
+     * @param array $data
+     * @return array
+     */
+    public function mapOlData(array $data): array
+    {
+        $book = [];
+
+        $book['name'] = $data['name'];
+        $book['author'] = $data['author'];
+        $book['isbn'] = $data['isbnSelected'];
+        $book['total_pages'] = $data['totalPages'];
+        $book['url'] = $data['bookUrl'];
+
+        return $book;
     }
 }

@@ -25,6 +25,7 @@ class Book extends Model
         'description',
         'published_date',
         'total_pages',
+        'url',
     ];
 
     protected $casts = [

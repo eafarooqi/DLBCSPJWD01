@@ -8,7 +8,6 @@ use App\Services\OpenLibraryService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Livewire\Features\SupportRedirects\Redirector;
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -19,6 +18,12 @@ class AddBook extends Component
     public BookForm $bookForm;
     private BookService $bookService;
     private OpenLibraryService $openLibraryService;
+
+    public function mount(): void
+    {
+        // checking if user creating book directly from Open Library search
+        $this->loadOlData();
+    }
 
     public function boot(BookService $bookService, OpenLibraryService $openLibraryService): void
     {
@@ -31,22 +36,23 @@ class AddBook extends Component
        return $this->bookService->getBookCrudOptions();
     }
 
+    private function loadOlData(): void
+    {
+        // getting session data
+        $olData = session()->get('_ol_input') ?? null;
+        if($olData){
+            // setting session data to null after loading
+            session(['_ol_input' => null]);
+
+            // setting form defaults to passed data.
+            $this->bookForm->setDefaults($olData);
+        }
+    }
+
     public function add(): RedirectResponse|Redirector
     {
         $this->bookForm->add();
         return redirect()->route('books.index')->with('success', __('Book added successfully'));
-    }
-
-    public function loadBookInformation(): void
-    {
-        try {
-            //$abc = $this->openLibraryService->getBookByIsbn('9781587656187');
-            $abc = $this->openLibraryService->getBookByIsbn('9780739408254');
-        }
-        catch (\Exception $ex){
-            //$this->addError('error', $ex->getMessage());
-            Session::flash('error', $ex->getMessage());
-        }
     }
 
     public function render(): View

@@ -27,7 +27,7 @@
                             <div class="col-sm-12">
                                 <x-form.input name="name" :label="__('Name')" value="the lord of the rings" />
                                 <x-form.input name="author" :label="__('Author')" value="{{ $search['author'] ?? '' }}" />
-                                <x-form.input name="isbn" :label="__('ISBN')" value="{{ $search['isbn'] ?? '' }}" />
+                                <x-form.input name="isbn" :label="__('ISBN')" value="{{ $search['isbn'] ?? '' }}" value="0007144091" />
                             </div>
                         </div>
                     </div>

@@ -40,6 +40,9 @@ class BookForm extends Form
     #[Validate('image|max:1024|nullable')] // 1MB Max
     public $image;
 
+    #[Validate('nullable|string|max:255')]
+    public ?string $url = null;
+
     public function setBook(Book $book): void
     {
         $this->book = $book;
@@ -51,6 +54,16 @@ class BookForm extends Form
         $this->description = $book->description;
         $this->total_pages = $book->total_pages;
         $this->image = $book->cover;
+        $this->url = $book->url;
+    }
+
+    public function setDefaults(array $default): void
+    {
+        $this->name = $default['name'];
+        $this->isbn = $default['isbn'];
+        $this->author = $default['author'];
+        $this->total_pages = $default['total_pages'];
+        $this->url = $default['url'];
     }
 
     public function add(): void

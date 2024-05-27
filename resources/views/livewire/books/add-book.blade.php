@@ -22,6 +22,7 @@
                         <x-form.textarea name="bookForm.description" wire:model="bookForm.description" :label="__('Description')" />
                         <x-form.input name="bookForm.total_pages" wire:model="bookForm.total_pages" type="number" min="0" :label="__('Total Pages')" />
                         <x-form.flat-pickr name="bookForm.published_date" wire:model="bookForm.published_date" :label="__('Published Date')" />
+                        <x-form.input name="bookForm.url" wire:model="bookForm.url" :label="__('Book URL')" />
                     </div>
                     <div class="col-sm-4">
                         <div class="text-center">
