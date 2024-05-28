@@ -30,8 +30,8 @@
                                     <x-form.show name="isbn" :label="__('ISBN')" :value="$book->isbn" />
                                     <x-form.show name="author" :label="__('Author')" :value="$book->author" />
 
-                                    <x-form.show name="genre_id" :label="__('Genre')" :value="$book->genre->name" />
-                                    <x-form.show name="category_id" :label="__('Category')" :value="$book->category->name" />
+                                    <x-form.show name="genre_id" :label="__('Genre')" :value="$book->genre?->name" />
+                                    <x-form.show name="category_id" :label="__('Category')" :value="$book->category?->name" />
 
                                     <x-form.show name="description" :label="__('Description')" :value="$book->description" />
                                     <x-form.show name="total_pages" type="number" min="0" :label="__('Total Pages')" :value="$book->total_pages" />
