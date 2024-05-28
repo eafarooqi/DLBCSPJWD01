@@ -33,11 +33,11 @@
 
                                     @if ($bookForm->image && !is_string($bookForm->image))
                                         <img alt="{{ $bookForm->name }}" src="{{ $bookForm->image->temporaryUrl() }}" class="img-responsive mt-2 image" width="200">
-                                    @elseif($bookForm->image)
-                                        <img alt="{{ $bookForm->name }}" src="{{ $bookForm->image }}" class="img-responsive mt-2 image" width="200">
+                                    @elseif($bookForm->book->cover)
+                                        <img alt="{{ $bookForm->book->name }}" src="{{ $bookForm->book->cover }}" class="img-responsive mt-2 image" width="200">
                                     @endif
 
-                                    @if ($bookForm->image)
+                                    @if ($bookForm->book->cover)
                                         <div class="middle d-grid gap-2">
                                             <button type="button" class="btn btn-danger btn-lg" wire:click="removeCover">{{ __('Remove') }}</button>
                                         </div>

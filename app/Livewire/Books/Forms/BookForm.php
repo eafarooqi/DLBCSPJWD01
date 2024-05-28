@@ -38,7 +38,7 @@ class BookForm extends Form
     #[Validate('nullable|date')]
     public ?string $published_date = null;
 
-    #[Validate('image|max:1024|nullable')] // 1MB Max
+    #[Validate('nullable|image|max:1024')] // 1MB Max
     public $image;
 
     #[Validate('nullable|string|max:255')]
@@ -62,7 +62,7 @@ class BookForm extends Form
         $this->category_id = $book->category_id;
         $this->description = $book->description;
         $this->total_pages = $book->total_pages;
-        $this->image = $book->cover;
+        //$this->image = $book->cover;
         $this->url = $book->url;
     }
 
@@ -80,19 +80,6 @@ class BookForm extends Form
         $this->total_pages = $default['total_pages'];
         $this->url = $default['url'];
         $this->ol_image = $default['image'];
-
-        //dd(file_get_contents($default['image']));
-
-
-        //$imageContent = file_get_contents($default['image']);
-
-        //Storage::disk('covers')->put('ddd.jpg', $imageContent);
-
-       // $cover->storeAs(path: 'covers', name: $fileName);
-
-        //$this->image = $imageContent;
-
-        // $dafault['image'];
     }
 
     /**
