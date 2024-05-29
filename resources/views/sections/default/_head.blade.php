@@ -7,7 +7,7 @@
 <meta name="author" content="Ehsan Ahmed Farooqi">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="{{ asset('assets/img/icons/prophet.png') }}" />
+<link rel="shortcut icon" href="{{ asset('assets/img/icons/favicon.png') }}" />
 
 <title>{{ config('app.name', 'BMS') }} - {{ $headTitle ?? '' }}</title>
 
