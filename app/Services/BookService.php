@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Genre;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BookService extends BaseService
@@ -51,8 +50,8 @@ class BookService extends BaseService
      */
     public function getBookCrudOptions(): array
     {
-        $data['genreOptions'] = Genre::optionsWithCache();
-        $data['categoryOptions'] = Category::getCategoryOptionsWithGroup();
+        $data['genreOptions'] = app(GenreService::class)->getGenreOptions();
+        $data['categoryOptions'] =app(CategoryService::class)->getCategoryOptions();
         return $data;
     }
 

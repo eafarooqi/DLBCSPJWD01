@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryService extends BaseService
 {
@@ -49,5 +50,15 @@ class CategoryService extends BaseService
     public function getParentCategories(): Collection
     {
         return Category::parents()->pluck('name','id');
+    }
+
+    /**
+     * Return category list for dropdowns.
+     *
+     * @return Collection
+     */
+    public function getCategoryOptions(): Collection
+    {
+        return Category::getCategoryOptionsWithGroup();
     }
 }
