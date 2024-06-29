@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'home'])->middleware(['auth'])->name('home');
 
 // Add protected routes. Only accessible after login and email verification
 Route::middleware(['auth', 'verified'])->group(function () {
