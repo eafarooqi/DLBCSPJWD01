@@ -33,6 +33,7 @@
                             <h1 class="mt-1 mb-3">{{ $booksCount }}</h1>
                             <div class="mb-0">
                                 <span class="text-muted">Total Books count</span>
+                                <a href="{{ route('books.index') }}" class="btn btn-light bg-white me-2 float-end">View <i class="fa-solid fa-square-arrow-up-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -54,6 +55,7 @@
                             <h1 class="mt-1 mb-3">{{ $categoriesCount }}</h1>
                             <div class="mb-0">
                                 <span class="text-muted">Total Categories count</span>
+                                <a href="{{ route('manage.categories.index') }}" class="btn btn-light bg-white me-2 float-end">View <i class="fa-solid fa-square-arrow-up-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -75,6 +77,7 @@
                             <h1 class="mt-1 mb-3">{{ $genresCount }}</h1>
                             <div class="mb-0">
                                 <span class="text-muted">Total Genres count</span>
+                                <a href="{{ route('manage.genres.index') }}" class="btn btn-light bg-white me-2 float-end">View <i class="fa-solid fa-square-arrow-up-right"></i></a>
                             </div>
                         </div>
                     </div>
