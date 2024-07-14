@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -60,5 +61,15 @@ class CategoryService extends BaseService
     public function getCategoryOptions(): Collection
     {
         return Category::getCategoryOptionsWithGroup();
+    }
+
+    /**
+     * Get total categories for the current user
+     *
+     * @return int
+     */
+    public function getCategoriesCount(): int
+    {
+        return Category::count();
     }
 }

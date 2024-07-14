@@ -160,4 +160,14 @@ class BookService extends BaseService
 
         return $book;
     }
+
+    /**
+     * Get total books for the current user
+     *
+     * @return int
+     */
+    public function getBooksCount(): int
+    {
+       return Book::count();
+    }
 }

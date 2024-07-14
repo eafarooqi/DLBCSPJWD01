@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\Genre;
 use Illuminate\Support\Collection;
 
@@ -49,5 +50,15 @@ class GenreService extends BaseService
     public function getGenreOptions(): Collection
     {
         return Genre::optionsWithCache();
+    }
+
+    /**
+     * Get total genre for the current user
+     *
+     * @return int
+     */
+    public function getGenresCount(): int
+    {
+        return Genre::count();
     }
 }

@@ -11,95 +11,70 @@
                 </div>
 
                 <div class="col-auto ms-auto text-end mt-n1">
-                    <a href="#" class="btn btn-light bg-white me-2">View All</a>
-                    <a href="#" class="btn btn-primary">Add Book</a>
+                    <a href="{{ route('books.index') }}" class="btn btn-light bg-white me-2">View All</a>
+                    <a href="{{ route('books.create') }}" class="btn btn-primary">Add Book</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-xl-3">
+                <div class="col-sm-6 col-xl-4">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">New Books</h5>
+                                    <h5 class="card-title">Books</h5>
                                 </div>
 
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="disc"></i>
+                                        <i class="align-middle" data-feather="book"></i>
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">550</h1>
+                            <h1 class="mt-1 mb-3">{{ $booksCount }}</h1>
                             <div class="mb-0">
-                                <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
-                                <span class="text-muted">Since last week</span>
+                                <span class="text-muted">Total Books count</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xl-3">
+                <div class="col-sm-6 col-xl-4">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Favourite</h5>
+                                    <h5 class="card-title">Categories</h5>
                                 </div>
 
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="users"></i>
+                                        <i class="fa-solid fa-bars"></i>
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">300</h1>
+                            <h1 class="mt-1 mb-3">{{ $categoriesCount }}</h1>
                             <div class="mb-0">
-                                <span class="badge badge-danger-light"> <i class="mdi mdi-arrow-bottom-right"></i> -5.25% </span>
-                                <span class="text-muted">Since last week</span>
+                                <span class="text-muted">Total Categories count</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xl-3">
+                <div class="col-sm-6 col-xl-4">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Read</h5>
+                                    <h5 class="card-title">Genres</h5>
                                 </div>
 
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="users"></i>
+                                        <i class="fa-solid fa-bars"></i>
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">20,000</h1>
+                            <h1 class="mt-1 mb-3">{{ $genresCount }}</h1>
                             <div class="mb-0">
-                                <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 4.65% </span>
-                                <span class="text-muted">Since last week</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col mt-0">
-                                    <h5 class="card-title">Total</h5>
-                                </div>
-
-                                <div class="col-auto">
-                                    <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="activity"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <h1 class="mt-1 mb-3">50,000</h1>
-                            <div class="mb-0">
-                                <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 2.35% </span>
-                                <span class="text-muted">Since last week</span>
+                                <span class="text-muted">Total Genres count</span>
                             </div>
                         </div>
                     </div>
