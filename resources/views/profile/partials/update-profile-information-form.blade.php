@@ -2,15 +2,6 @@
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 float-end"
-                >{{ __('Saved.') }}</p>
-            @endif
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
@@ -26,11 +17,11 @@
         @csrf
         @method('patch')
 
-        <x-form.input name="name" wire:model="name" :label="__('Name')" :value="$user->name" required autofocus autocomplete="name" />
+        <x-form.input name="name" :label="__('Name')" :value="$user->name" required autofocus autocomplete="name" />
 
         <div>
 
-            <x-form.input name="email" wire:model="email" :label="__('Email')" :value="$user->email" required autocomplete="username" />
+            <x-form.input name="email" :label="__('Email')" :value="$user->email" required autocomplete="username" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
@@ -52,7 +43,16 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button class="btn btn-primary float-end">{{ __('Save') }}</x-primary-button>
+            <x-primary-button class="btn btn-primary">{{ __('Save') }}</x-primary-button>
+            @if (session('status') === 'profile-updated')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600"
+                ><span class="badge bg-success">{{ __('Saved.') }}</span></p>
+            @endif
         </div>
     </form>
 </section>
