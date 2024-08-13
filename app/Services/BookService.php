@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Models\Book;
-use App\Models\Category;
-use App\Models\Genre;
 use Illuminate\Support\Facades\Storage;
 
 class BookService extends BaseService

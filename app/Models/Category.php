@@ -18,6 +18,11 @@ class Category extends Model
 
     public $timestamps = false;
 
+    /**
+     * fillable attributes on this model.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'parent_id',
@@ -82,12 +87,24 @@ class Category extends Model
         return $this->hasMany(Book::class, 'category_id');
     }
 
+    /**
+     * check if current category is a parent category.
+     *
+     * @return bool
+     */
     public function isParent(): bool
     {
         return $this->parent_id == null;
     }
 
-    public static function getCategoryOptionsWithGroup()
+    /**
+     * getting categories to list in dropdown with cache.
+     * categories will only be loaded from database if not
+     * already in cache.
+     *
+     * @return mixed
+     */
+    public static function getCategoryOptionsWithGroup(): mixed
     {
         return Cache::remember(self::getCacheKey() .'_opt_group', self::getCacheLife(), function() {
             return self::parents()->with(['children'])->get();

@@ -8,6 +8,11 @@ class Language extends Model
 {
     public $timestamps = false;
 
+    /**
+     * fillable attributes on this model.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'code',

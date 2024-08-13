@@ -10,11 +10,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
 
-
 class Book extends Model
 {
     use SoftDeletes, HasFactory, HasUserTrait;
 
+    /**
+     * fillable attributes on this model.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'isbn',
@@ -28,25 +32,52 @@ class Book extends Model
         'url',
     ];
 
+
+    /**
+     * casting model attributes.
+     *
+     * @var string[]
+     */
     protected $casts = [
         'published_date' => 'date',
     ];
 
+    /**
+     * getting book user.
+     * who has created the book in system.
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * getting book category.
+     *
+     * @return BelongsTo
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * getting book genre.
+     *
+     * @return BelongsTo
+     */
     public function genre(): BelongsTo
     {
         return $this->belongsTo(Genre::class);
     }
 
+    /**
+     * getting book language.
+     *
+     * @return BelongsTo
+     */
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);

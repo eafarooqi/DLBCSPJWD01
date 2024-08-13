@@ -16,6 +16,11 @@ class Genre extends Model
 
     public $timestamps = false;
 
+    /**
+     * fillable attributes on this model.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'name',
     ];
