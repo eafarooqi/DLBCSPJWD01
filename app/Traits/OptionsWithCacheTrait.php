@@ -51,7 +51,17 @@ trait OptionsWithCacheTrait
         });
     }
 
-    public static function optionsWithCache(string $dataColumn = 'name',  string $keyColumn = 'id', string $sortBy = 'name', Builder $query=null)
+    /**
+     * Entity attributs as key value to be used in dropdowns.
+     * query will only be run in cache is empty.
+     *
+     * @param string $dataColumn
+     * @param string $keyColumn
+     * @param string $sortBy
+     * @param Builder|null $query
+     * @return mixed
+     */
+    public static function optionsWithCache(string $dataColumn = 'name', string $keyColumn = 'id', string $sortBy = 'name', Builder $query=null): mixed
     {
         return Cache::remember(self::getCacheKey(), self::getCacheLife(), function() use($dataColumn, $keyColumn, $sortBy, $query) {
             return self::getOptionsQuery($sortBy, $query)->pluck($dataColumn, $keyColumn);
@@ -66,6 +76,13 @@ trait OptionsWithCacheTrait
         });
     }
 
+    /**
+     * getting query object.
+     *
+     * @param string $sortBy
+     * @param Builder|null $query
+     * @return Builder
+     */
     public static function getOptionsQuery(string $sortBy = 'name', Builder $query=null): Builder
     {
         if(!$query)
