@@ -2,10 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
 
 class CategoryService extends BaseService
 {
