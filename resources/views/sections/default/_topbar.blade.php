@@ -9,7 +9,7 @@
                     <img src="{{ Auth::user()->picture }}" class="avatar img-fluid rounded" alt="{{Auth::user()->username}}" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> {{ __('Profile') }}</a>
+                    <a class="dropdown-item" href="{{ url('/profile') }}"><i class="align-middle me-1" data-feather="user"></i> {{ __('Profile') }}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('/logout') }}"><i class="align-middle me-1" data-feather="log-out"></i> {{ __('Logout') }}</a>
                 </div>

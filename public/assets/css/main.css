@@ -357,3 +357,33 @@ textarea:not(.e-rte-hidden) {
 .cover-image-container:hover .middle {
     opacity: 1;
 }
+
+.confirm-user-deletion{
+    border: 1px solid gray;
+    box-shadow: 10px 10px;
+    border-radius: 10px;
+}
+
+.account-del-txt{
+    padding: 0.3rem 0.85rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    appearance: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.confirm-user-deletion ul {
+    padding-left: 3px;
+    color: red;
+}
+
+
+.confirm-user-deletion ul li {
+    list-style: none;
+}
