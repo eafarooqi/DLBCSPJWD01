@@ -7,6 +7,7 @@ use App\Services\BookService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class BookController extends AdminController
@@ -18,6 +19,11 @@ class BookController extends AdminController
         parent::__construct();
     }
 
+    /**
+     * Book listing page
+     *
+     * @return View
+     */
     public function index(): View
     {
         // Authorization
@@ -56,6 +62,12 @@ class BookController extends AdminController
         return view('templates.books.book.edit', compact('book'));
     }
 
+    /**
+     * Display book in a read only mode.
+     *
+     * @param Book $book
+     * @return View
+     */
     public function show(Book $book)
     {
         // Authorization
@@ -65,6 +77,12 @@ class BookController extends AdminController
         return view('templates.books.book.show', compact('book'));
     }
 
+    /**+
+     * Delete given book.
+     *
+     * @param Book $book
+     * @return RedirectResponse
+     */
     public function destroy(Book $book)
     {
         // Authorization

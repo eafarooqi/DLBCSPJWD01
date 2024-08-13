@@ -42,19 +42,25 @@ class ProfileController extends AdminController
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // form validation
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
 
+        // getting logged in user
         $user = $request->user();
 
+        // logging out current user
         Auth::logout();
 
+        // deleting user
         $user->delete();
 
+        // destroying session
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        // redirecting back to home page.
         return Redirect::to('/');
     }
 }

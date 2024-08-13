@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\OpenLibraryService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,12 +18,24 @@ class OpenLibraryController extends AdminController
         parent::__construct();
     }
 
+    /**
+     * Display search page.
+     *
+     * @return View
+     */
     public function index(): View
     {
         // Loading search template
         return view('templates.books.open_library.search');
     }
 
+    /**
+     * validate and perform OL search.
+     *
+     * @param Request $request
+     * @return View
+     * @throws RequestException
+     */
     public function search(Request $request)
     {
         // search form validation
@@ -36,8 +51,10 @@ class OpenLibraryController extends AdminController
         ]
         );
 
+        // calling open library search function.
         $data = $this->openLibraryService->searchBooks($validated['name'], $validated['author'], $validated['isbn']);
 
+        // search template
         return view('templates.books.open_library.search', ['books' => $data, 'search' => $validated]);
     }
 }

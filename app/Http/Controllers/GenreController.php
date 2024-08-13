@@ -8,6 +8,7 @@ use App\Services\GenreService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class GenreController extends AdminController
@@ -18,6 +19,12 @@ class GenreController extends AdminController
     {
         parent::__construct();
     }
+
+    /**
+     * listing page for genre.
+     *
+     * @return View
+     */
     public function index(): View
     {
         // Authorization
@@ -41,6 +48,12 @@ class GenreController extends AdminController
         return view('templates.manage.genre.create');
     }
 
+    /**
+     * create new genre.
+     *
+     * @param GenreRequest $request
+     * @return RedirectResponse
+     */
     public function store(GenreRequest $request)
     {
         // Authorization
@@ -69,6 +82,13 @@ class GenreController extends AdminController
         return view('templates.manage.genre.edit', compact('genre'));
     }
 
+    /**
+     * update genre.
+     *
+     * @param GenreRequest $request
+     * @param Genre $genre
+     * @return RedirectResponse
+     */
     public function update(GenreRequest $request, Genre $genre)
     {
         // Authorization
@@ -81,6 +101,12 @@ class GenreController extends AdminController
         return redirect()->route('manage.genres.index')->with('success', __('Record updated successfully'));
     }
 
+    /**
+     * Display genre in read only mode.
+     *
+     * @param Genre $genre
+     * @return View
+     */
     public function show(Genre $genre)
     {
         // Authorization
@@ -90,6 +116,12 @@ class GenreController extends AdminController
         return view('templates.manage.genre.show', compact('genre'));
     }
 
+    /**
+     * Delete genre.
+     *
+     * @param Genre $genre
+     * @return RedirectResponse
+     */
     public function destroy(Genre $genre)
     {
         // Authorization

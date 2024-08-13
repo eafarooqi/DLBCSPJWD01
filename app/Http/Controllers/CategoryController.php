@@ -8,6 +8,7 @@ use App\Services\CategoryService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class CategoryController extends AdminController
@@ -19,6 +20,11 @@ class CategoryController extends AdminController
         parent::__construct();
     }
 
+    /**
+     * Category listing page
+     *
+     * @return View
+     */
     public function index(): View
     {
         // Authorization
@@ -45,6 +51,12 @@ class CategoryController extends AdminController
         return view('templates.manage.category.create', $data);
     }
 
+    /**
+     * create new category.
+     *
+     * @param CategoryRequest $request
+     * @return RedirectResponse
+     */
     public function store(CategoryRequest $request)
     {
         // Authorization
@@ -77,6 +89,13 @@ class CategoryController extends AdminController
         return view('templates.manage.category.edit', $data);
     }
 
+    /**
+     * update category
+     *
+     * @param CategoryRequest $request
+     * @param Category $category
+     * @return RedirectResponse
+     */
     public function update(CategoryRequest $request, Category $category)
     {
         // Authorization
@@ -89,6 +108,12 @@ class CategoryController extends AdminController
         return redirect()->route('manage.categories.index')->with('success', __('Record updated successfully'));
     }
 
+    /**
+     * display category in ready only mode.
+     *
+     * @param Category $category
+     * @return View
+     */
     public function show(Category $category)
     {
         // Authorization
@@ -98,6 +123,12 @@ class CategoryController extends AdminController
         return view('templates.manage.category.show', compact('category'));
     }
 
+    /**
+     * Delete category.
+     *
+     * @param Category $category
+     * @return RedirectResponse
+     */
     public function destroy(Category $category)
     {
         // Authorization
