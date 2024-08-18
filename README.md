@@ -27,4 +27,15 @@ BMS is a very simple Books Management System designed to solve books management 
 
 ### Installation
 - Install all Prerequisites. For php and MySQL WAMP or XAMPP servers can also be used on windows. For linux Ngnix or Apache server can be installed. 
-- 
+- Make sure all dependencies are installed correctly by running following commands in command line. 
+```
+php -v
+composer -V
+node -v
+npm -v
+git --version
+```
+- For installation from git clone the project to web root directory wamp or xampp server.
+```
+git clone
+```
