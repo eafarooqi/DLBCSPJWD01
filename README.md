@@ -27,7 +27,8 @@ BMS is a very simple Books Management System designed to solve books management 
 
 
 ### Installation
-- Install all Prerequisites. For php and MySQL WAMP or XAMPP servers can also be used on windows. For linux Ngnix or Apache server can be installed.
+- Install all Prerequisites. For php and MySQL WAMP or XAMPP servers can also be used on windows which install php and MySQL automatically. For linux Ngnix or Apache server can be installed.
+- for php custom installation just download the php thread safe from the above link and extract the content into one folder.
 - On window make sure php is added to the path variable and following extensions are enabled in php.ini file. 
 - On windows uncomment them in php.ini file or in Linux install them.
 ```
@@ -39,8 +40,8 @@ pdo_mysql
 pdo_sqlite
 zip
 sqlite3
-
 ```
+- for MySQL Custom installation if WAMP or XAMPP are not used, please take the option custom during installation and select server and MySQL Workbench under applications only.
 - Make sure all dependencies are installed correctly by running following commands in command line. 
 ```
 php -v
@@ -52,6 +53,7 @@ git --version (optional --only requried for installation from github)
 - Unzip the bms.zip file to any folder
 - Login into the mysql Server. Create a database `bms` in MySQL server. Can be done using MySQL Workbench.
 - import the sql dump present in the zip file `bms.sql`
+- update .env file in project root directory for database username (DB_USERNAME) & password (DB_PASSWORD) if any, default is set to username root and no password.
 - using command line navigate to the project folder which was extracted in the first step.
 - Run following commands
 ```

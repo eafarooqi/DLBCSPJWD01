@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 25/04/2024 06:46:08
+ Date: 03/09/2024 16:44:23
 */
 
 SET NAMES utf8mb4;
@@ -33,6 +33,8 @@ CREATE TABLE `books`  (
   `description` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `published_date` date NULL DEFAULT NULL,
   `total_pages` int(0) NULL DEFAULT NULL,
+  `cover` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
@@ -45,12 +47,22 @@ CREATE TABLE `books`  (
   CONSTRAINT `books_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `books_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `books_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of books
 -- ----------------------------
-INSERT INTO `books` VALUES (1, 1, 3, 3, NULL, 'df', NULL, NULL, NULL, NULL, NULL, '2024-03-18 14:33:14', '2024-03-18 14:33:14', NULL);
+INSERT INTO `books` VALUES (1, 1, 3, 3, NULL, 'df', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-03-18 14:33:14', '2024-05-28 14:03:41', '2024-05-28 14:03:41');
+INSERT INTO `books` VALUES (2, 1, NULL, NULL, NULL, 'The Lord of the Rings', '0007144091', 'David Brawn', NULL, NULL, 48, '2.jpg', 'https://openlibrary.org/books/OL7262250M', '2024-05-28 14:17:05', '2024-09-03 14:35:21', '2024-09-03 14:35:21');
+INSERT INTO `books` VALUES (3, 1, 17, 8, NULL, 'The Lord of the Rings', '0007144091', 'David Brawn', NULL, NULL, 48, '3.jpg', 'https://openlibrary.org/books/OL7262250M', '2024-05-28 14:24:04', '2024-09-03 14:35:13', NULL);
+INSERT INTO `books` VALUES (4, 1, NULL, NULL, NULL, 'The Lord of the Rings', '0007144091', 'David Brawn', NULL, NULL, 48, '4.jpg', 'https://openlibrary.org/books/OL7262250M', '2024-07-10 21:08:56', '2024-09-03 14:07:13', '2024-09-03 14:07:13');
+INSERT INTO `books` VALUES (5, 1, 17, 8, NULL, 'A Court of Mist and Fury', '1804225568', 'Sarah J. Maas', NULL, NULL, 640, '5.jpg', 'https://openlibrary.org/books/OL26992991M', '2024-09-03 14:08:22', '2024-09-03 14:08:25', NULL);
+INSERT INTO `books` VALUES (6, 1, 17, 7, NULL, 'A Game of Thrones', '0553573403', 'George R. R. Martin', NULL, NULL, 856, '6.jpg', 'https://openlibrary.org/books/OL48571889M', '2024-09-03 14:32:16', '2024-09-03 14:32:19', NULL);
+INSERT INTO `books` VALUES (7, 1, 39, 9, NULL, 'A Gentle Reminder', '1949759296', 'Bianca Sparacino', NULL, NULL, 0, '7.jpg', 'https://openlibrary.org/books/OL34147323M', '2024-09-03 14:34:26', '2024-09-03 14:34:28', NULL);
+INSERT INTO `books` VALUES (8, 1, NULL, NULL, NULL, 'The Silent Patient', '1409181626', 'Alex Michaelides', NULL, NULL, 352, '8.jpg', 'https://openlibrary.org/books/OL28025498M', '2024-09-03 14:35:00', '2024-09-03 14:35:02', NULL);
+INSERT INTO `books` VALUES (9, 1, 13, 25, NULL, 'Napoleon Hill\'s \"Think and Grow Rich\" (Infinite Success)', '1904902812', 'Karen McCreadie', NULL, NULL, 128, '9.jpg', 'https://openlibrary.org/books/OL12292522M', '2024-09-03 14:39:41', '2024-09-03 14:41:44', NULL);
+INSERT INTO `books` VALUES (10, 1, 17, 2, NULL, 'Pacific Vortex!', '0816138877', 'Clive Cussler', NULL, NULL, 270, '10.jpg', 'https://openlibrary.org/books/OL27911911M', '2024-09-03 14:41:34', '2024-09-03 14:41:36', NULL);
+INSERT INTO `books` VALUES (11, 1, 3, 4, NULL, 'A Mind That Found Itself', '1627300015', 'Clifford Whittingham Beers', NULL, NULL, 363, '11.jpg', 'https://openlibrary.org/books/OL26403311M', '2024-09-03 14:43:36', '2024-09-03 14:43:38', NULL);
 
 -- ----------------------------
 -- Table structure for categories
@@ -68,7 +80,7 @@ CREATE TABLE `categories`  (
   INDEX `categories_parent_id_foreign`(`parent_id`) USING BTREE,
   CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `categories_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of categories
@@ -167,7 +179,7 @@ CREATE TABLE `genres`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `genres_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `genres_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of genres
@@ -195,6 +207,7 @@ INSERT INTO `genres` VALUES (21, 1, 'Thriller', NULL);
 INSERT INTO `genres` VALUES (22, 1, 'Tragedy', NULL);
 INSERT INTO `genres` VALUES (23, 1, 'Travel literature', NULL);
 INSERT INTO `genres` VALUES (24, 1, 'Spirituality', NULL);
+INSERT INTO `genres` VALUES (25, 1, 'Business', NULL);
 
 -- ----------------------------
 -- Table structure for languages
@@ -290,11 +303,11 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'Ehsan Farooqi', 'e_a_farooqi@hotmail.com', '2024-03-03 15:46:30', '$2y$12$Je8Lv0Jyrx8du0KnTgpMA.M3YPHaWW0BQA57cSAXJabGTN40cA8qO', NULL, '2024-02-24 20:30:36', '2024-03-03 15:46:30');
+INSERT INTO `users` VALUES (1, 'Ehsan Farooqi', 'ehsan-ahmed.farooqi@iu-study.org', '2024-03-03 15:46:30', '$2y$12$Je8Lv0Jyrx8du0KnTgpMA.M3YPHaWW0BQA57cSAXJabGTN40cA8qO', NULL, '2024-02-24 20:30:36', '2024-07-30 19:39:57');
 
 SET FOREIGN_KEY_CHECKS = 1;
