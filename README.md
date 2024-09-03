@@ -27,7 +27,20 @@ BMS is a very simple Books Management System designed to solve books management 
 
 
 ### Installation
-- Install all Prerequisites. For php and MySQL WAMP or XAMPP servers can also be used on windows. For linux Ngnix or Apache server can be installed. 
+- Install all Prerequisites. For php and MySQL WAMP or XAMPP servers can also be used on windows. For linux Ngnix or Apache server can be installed.
+- On window make sure php is added to the path variable and following extensions are enabled in php.ini file. 
+- On windows uncomment them in php.ini file or in Linux install them.
+```
+fileinfo
+gd
+intl
+mysqli
+pdo_mysql
+pdo_sqlite
+zip
+sqlite3
+
+```
 - Make sure all dependencies are installed correctly by running following commands in command line. 
 ```
 php -v
