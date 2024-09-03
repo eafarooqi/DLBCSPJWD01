@@ -23,6 +23,7 @@ BMS is a very simple Books Management System designed to solve books management 
 - npm >= 10.0 (bundled with NodeJS)
 - git (https://git-scm.com/downloads)
 - composer (https://getcomposer.org/download/)
+- MySQL Workbench (https://dev.mysql.com/downloads/workbench/)
 
 
 ### Installation
@@ -33,9 +34,21 @@ php -v
 composer -V
 node -v
 npm -v
-git --version
+git --version (optional --only requried for installation from github)
 ```
-- For installation from git clone the project to web root directory wamp or xampp server.
+- Unzip the bms.zip file to any folder
+- Login into the mysql Server. Create a database `bms` in MySQL server. Can be done using MySQL Workbench.
+- import the sql dump present in the zip file `bms.sql`
+- using command line navigate to the project folder which was extracted in the first step.
+- Run following commands
 ```
-git clone
+composer install
+npm install
+npm run build
+php artisan serve
+```
+
+- The application should be accessible in the browser with the following URL
+```
+http://127.0.0.1:8000
 ```
