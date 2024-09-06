@@ -50,6 +50,8 @@ node -v
 npm -v
 git --version (optional --only requried for installation from github)
 ```
+
+#### Installation with source code
 - Unzip the bms.zip file to any folder
 - Login into the mysql Server. Create a database `bms` in MySQL server. Can be done using MySQL Workbench.
 - import the sql dump present in the zip file `bms.sql`
