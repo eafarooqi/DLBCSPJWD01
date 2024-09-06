@@ -60,6 +60,7 @@ git --version (optional --only requried for installation from github)
 composer install
 npm install
 npm run build
+php artisan optimize:clear
 php artisan serve
 ```
 
