@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\OpenLibraryService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -34,7 +35,7 @@ class OpenLibraryController extends AdminController
      *
      * @param Request $request
      * @return View
-     * @throws RequestException
+     * @throws RequestException|ConnectionException
      */
     public function search(Request $request)
     {
@@ -53,6 +54,12 @@ class OpenLibraryController extends AdminController
 
         // calling open library search function.
         $data = $this->openLibraryService->searchBooks($validated['name'], $validated['author'], $validated['isbn']);
+
+        // in case search returns empty
+        session()->forget('error');
+        if(!$data){
+            session()->flash('error', 'No results found');
+        }
 
         // search template
         return view('templates.books.open_library.search', ['books' => $data, 'search' => $validated]);

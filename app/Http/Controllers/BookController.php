@@ -23,6 +23,7 @@ class BookController extends AdminController
      * Book listing page
      *
      * @return View
+     * @throws AuthorizationException
      */
     public function index(): View
     {
@@ -52,6 +53,7 @@ class BookController extends AdminController
      *
      * @param Book $book
      * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
     public function edit(Book $book)
     {
@@ -67,6 +69,7 @@ class BookController extends AdminController
      *
      * @param Book $book
      * @return View
+     * @throws AuthorizationException
      */
     public function show(Book $book)
     {
@@ -82,6 +85,7 @@ class BookController extends AdminController
      *
      * @param Book $book
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Book $book)
     {

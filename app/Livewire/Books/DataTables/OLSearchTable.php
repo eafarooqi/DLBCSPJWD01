@@ -2,9 +2,7 @@
 
 namespace App\Livewire\Books\DataTables;
 
-use App\Models\Book;
 use Illuminate\Support\Collection;
-use Livewire\Attributes\On;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Footer;
@@ -102,7 +100,6 @@ final class OLSearchTable extends PowerGridComponent
     {
         return [
             Button::make('show', 'Show')
-                //->icon('show', ['class' => 'fa-solid fa-eye me-1'])
                 ->class('btn btn-info btn-sm float-start')
                 ->dispatchTo('books.modal.details-modal', 'loadBookDetails', ['details' => $row]),
         ];

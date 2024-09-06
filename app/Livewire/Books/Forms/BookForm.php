@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\User;
 use App\Services\BookService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -86,6 +87,7 @@ class BookForm extends Form
      * add new book
      *
      * @return void
+     * @throws ValidationException
      */
     public function add(): void
     {
@@ -103,6 +105,7 @@ class BookForm extends Form
      * update book
      *
      * @return void
+     * @throws ValidationException
      */
     public function update(): void
     {
