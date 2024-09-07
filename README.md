@@ -51,6 +51,26 @@ npm -v
 git --version (optional --only requried for installation from github)
 ```
 
+#### Installation from git
+- clone project
+```
+git clone https://github.com/eafarooqi/DLBCSPJWD01.git
+```
+
+- Create database `bms` and import `bms.sql` available in the source to get test data Or run the following command if you want to create all the tables without data. This will create blank tables.
+- Update the .env file as per database user and password. default is set to root and empty password.
+```
+php artisan migrate
+```
+- change directory to the cloned project and run the following commands
+```
+composer install
+npm install
+npm run build
+php artisan optimize:clear
+php artisan serve
+```
+
 #### Installation with source code
 - Unzip the bms.zip file to any folder
 - Login into the mysql Server. Create a database `bms` in MySQL server. Can be done using MySQL Workbench.
@@ -71,8 +91,13 @@ php artisan serve
 http://127.0.0.1:8000
 ```
 
+## Test Account
+- only if bms.sql dump is used otherwise user has to register and activate the account by email before login.
+username: ehsan-ahmed.farooqi@iu-study.org
+password: IUS@2024
+
 ## Testing
-- Run following command to run tests
+- Run following command to run tests.
 ```
 php artisan test
 ```

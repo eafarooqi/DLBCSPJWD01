@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 03/09/2024 16:44:23
+ Date: 07/09/2024 18:50:26
 */
 
 SET NAMES utf8mb4;
@@ -47,7 +47,7 @@ CREATE TABLE `books`  (
   CONSTRAINT `books_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `books_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `books_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of books
@@ -63,6 +63,14 @@ INSERT INTO `books` VALUES (8, 1, NULL, NULL, NULL, 'The Silent Patient', '14091
 INSERT INTO `books` VALUES (9, 1, 13, 25, NULL, 'Napoleon Hill\'s \"Think and Grow Rich\" (Infinite Success)', '1904902812', 'Karen McCreadie', NULL, NULL, 128, '9.jpg', 'https://openlibrary.org/books/OL12292522M', '2024-09-03 14:39:41', '2024-09-03 14:41:44', NULL);
 INSERT INTO `books` VALUES (10, 1, 17, 2, NULL, 'Pacific Vortex!', '0816138877', 'Clive Cussler', NULL, NULL, 270, '10.jpg', 'https://openlibrary.org/books/OL27911911M', '2024-09-03 14:41:34', '2024-09-03 14:41:36', NULL);
 INSERT INTO `books` VALUES (11, 1, 3, 4, NULL, 'A Mind That Found Itself', '1627300015', 'Clifford Whittingham Beers', NULL, NULL, 363, '11.jpg', 'https://openlibrary.org/books/OL26403311M', '2024-09-03 14:43:36', '2024-09-03 14:43:38', NULL);
+INSERT INTO `books` VALUES (12, 1, 35, 12, NULL, 'Dr. Seuss\' The cat in the hat', '037582491X', 'Jesse Leon McCann', NULL, NULL, 24, '12.jpg', 'https://openlibrary.org/books/OL3571713M', '2024-09-06 14:41:19', '2024-09-06 14:41:20', NULL);
+INSERT INTO `books` VALUES (13, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-09-06 14:43:12', '2024-09-06 14:43:17', '2024-09-06 14:43:17');
+INSERT INTO `books` VALUES (14, 1, NULL, NULL, NULL, 'The Lord of the rings', '0618257365', 'David Brawn', NULL, NULL, 48, '14.jpg', 'https://openlibrary.org/books/OL3670562M', '2024-09-07 16:16:24', '2024-09-07 16:16:25', NULL);
+INSERT INTO `books` VALUES (15, 1, NULL, NULL, NULL, 'The Lord of the rings', '0618257365', 'David Brawn', NULL, NULL, 48, '15.jpg', 'https://openlibrary.org/books/OL3670562M', '2024-09-07 16:19:16', '2024-09-07 16:29:58', '2024-09-07 16:29:58');
+INSERT INTO `books` VALUES (16, 1, 20, 18, NULL, 'NASA', '0737757450', 'Margaret Haerens', NULL, NULL, 222, '16.jpg', 'https://openlibrary.org/books/OL25067439M', '2024-09-07 16:30:51', '2024-09-07 16:30:53', NULL);
+INSERT INTO `books` VALUES (17, 1, 20, 18, NULL, 'Computer science', '031409573X', 'Behrouz A. Forouzan', NULL, NULL, 914, '17.jpg', 'https://openlibrary.org/books/OL992805M', '2024-09-07 16:31:53', '2024-09-07 16:31:54', NULL);
+INSERT INTO `books` VALUES (18, 1, 21, 18, NULL, 'Database systems', '0072353872', 'Paolo Atzeni', NULL, NULL, 612, '18.jpg', 'https://openlibrary.org/books/OL22052767M', '2024-09-07 16:32:27', '2024-09-07 16:32:28', NULL);
+INSERT INTO `books` VALUES (19, 1, 21, 18, NULL, 'Database systems', '0072353872', 'Paolo Atzeni', NULL, NULL, 612, '19.jpg', 'https://openlibrary.org/books/OL22052767M', '2024-09-07 16:33:15', '2024-09-07 16:36:19', '2024-09-07 16:36:19');
 
 -- ----------------------------
 -- Table structure for categories
@@ -179,7 +187,7 @@ CREATE TABLE `genres`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `genres_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `genres_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of genres
@@ -220,7 +228,7 @@ CREATE TABLE `languages`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of languages
@@ -308,6 +316,6 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'Ehsan Farooqi', 'ehsan-ahmed.farooqi@iu-study.org', '2024-03-03 15:46:30', '$2y$12$Je8Lv0Jyrx8du0KnTgpMA.M3YPHaWW0BQA57cSAXJabGTN40cA8qO', NULL, '2024-02-24 20:30:36', '2024-07-30 19:39:57');
+INSERT INTO `users` VALUES (1, 'Ehsan Farooqi', 'ehsan-ahmed.farooqi@iu-study.org', '2024-03-03 15:46:30', '$2y$12$nl8AEGfPoRHtQl3kgnVJye.jPsoQ8zOcRfhqzfalyI98eoFY09qQy', NULL, '2024-02-24 20:30:36', '2024-09-07 16:49:39');
 
 SET FOREIGN_KEY_CHECKS = 1;
